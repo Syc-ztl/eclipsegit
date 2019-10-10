@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 实体类的超类， 日志相关的信息
  * @author lenveo
- *
+ *sdfasd
  */
 public class BaseEntity implements Serializable{
 	/**
