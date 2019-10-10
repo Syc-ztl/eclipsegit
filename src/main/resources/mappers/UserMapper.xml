@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.UserMapper">
+	
+	<!--	/**
+	 * 添加个人用户信息
+	 * @param user  用户
+	 * @return  返回添加成功或者失败
+	 */ 
+	 Integer  addUser(User user);
+	  -->
+	<insert id="addUser"  keyProperty="uid"  useGeneratedKeys="true">
+		INSERT INTO t_user
+		(
+			username,
+			id_card,phone,
+			email,avatar,password,
+			salt,authority,
+			created_user,created_time,
+			modified_user,modified_time
+		)VALUES(
+			#{username},
+			#{idCard},#{phone},
+			#{email},#{avatar},
+			#{password},
+			#{salt},#{authority},#{createdUser},
+			#{createdTime},#{modifiedUser},
+			#{modifiedTime}
+		)
+	
+	</insert>
+	
+	
+	<!--/**
+	 * 根据电话修改密码
+	 * @param phone
+	 * @return
+	 */
+	Integer  updatePasswordByPhone(String phone,String password);  -->
+	
+	<update id="updatePasswordByPhone">
+		UPDATE 
+			t_user
+		SET
+			password=#{password}
+		WHERE 
+			phone=#{phone}
+	</update>
+	
+	
+	
+	<!-- /**
+	 * 跟据电话修改电话
+	 * @param oldphone 老电话
+	 * @param newphone 新电话
+	 * @return
+	 */
+	Integer  updatePhone(@Param("oldphone")String oldphone,@Param("newphone")String newphone); -->
+	<update id="updatePhone">
+		UPDATE 
+			t_user
+		SET
+			phone=#{newphone}
+		WHERE 
+			phone=#{oldphone}
+	
+	</update>
+	
+	
+	
+	
+	
+	
+	<!--	/**
+	 * 根据昵称名查找用户
+	 * @param username
+	 * @return  返回用户信息
+	 */
+	User  findByUsername(String username);  -->
+	<select id="findByUsername" resultType="com.sun.chenglixin.entity.User">
+		SELECT 
+			uid, username,
+			password, avatar,
+			salt
+		FROM
+			t_user
+		WHERE
+			username=#{username}
+	</select>
+	
+	<!--	/**
+	 * 根据电话查找
+	 * @param phone
+	 * @return
+	 */
+	User  findByPhone(String phone);  -->
+	<select id="findByPhone" resultType="com.sun.chenglixin.entity.User">
+		SELECT 
+			uid, username,
+			password, avatar,
+			salt
+		FROM
+			t_user
+		WHERE
+			phone=#{phone}
+	</select>
+</mapper>

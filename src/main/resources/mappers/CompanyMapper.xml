@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.CompanyMapper">
+	
+	<!--	/**
+	/**
+	 * 添加一个企业信息
+	 * @param company  企业信息实体类
+	 * @return  返回受影响的行数
+	 */
+	Integer  addCompany(Company company);
+	  -->
+	<insert id="addCompany"  keyProperty="cid"  useGeneratedKeys="true">
+		INSERT INTO t_company
+		(
+			 username ,company_name,
+			id_card,phone,email,
+			password,salt,
+			avatar,
+			created_user,created_time,
+			modified_user,modified_time
+		)VALUES(
+			#{userName},#{companyName},
+			#{idCard},#{phone},
+			#{email},#{avatar},
+			#{password},
+			#{salt},#{createdUser},
+			#{createdTime},#{modifiedUser},
+			#{modifiedTime}
+		)
+	
+	</insert>
+	
+	
+	
+	
+	<!--/**
+	 * 根据电话修改密码
+	 * @param phone
+	 * @param password
+	 * @return
+	 */
+	Integer  updatePassword(@Param("phone")String phone,@Param("password")String password);  -->
+	<update id="updatePassword">
+		UPDATE 
+			t_company
+		SET
+			password=#{password}
+		WHERE 
+			phone=#{phone}
+	
+	</update>
+	
+	
+	<!--/**
+	 * 跟据电话修改电话
+	 * @param oldphone 老电话
+	 * @param newphone 新电话
+	 * @return
+	 */
+	Integer  updatePhone(@Param("oldphone")String oldphone,@Param("newphone")String newphone);  -->
+	<update id="updatePhone">
+		UPDATE 
+			t_company
+		SET
+			phone=#{newphone}
+		WHERE 
+			phone=#{oldphone}
+	</update>
+	
+	
+	
+	
+	<!-- /**
+	 * 根据企业名查询公司信息
+	 * @param companyName
+	 * @return
+	 */
+	Company   findByCompany(String companyName); -->
+	<select id="findByCompany"  resultType="com.sun.chenglixin.entity.Company">
+		SELECT 
+			cid, username,
+			company_name,
+			password, avatar,
+			salt
+		FROM 
+			t_company
+		WHERE 
+			company_name=#{companyName}
+	
+	</select>
+	
+	
+	<!-- /**
+	 * 根据电话查找公司信息
+	 * @param phone
+	 * @return  
+	 */
+	Company  findByPhone(String phone); -->
+	<select id="findByPhone" resultType="com.sun.chenglixin.entity.Company">
+		SELECT 
+			cid, username,
+			company_name,
+			password, avatar,
+			salt
+		FROM 
+			t_company
+		WHERE 
+			phone=#{phone}
+	</select>
+	
+	
+	
+</mapper>

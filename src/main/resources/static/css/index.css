@@ -1,0 +1,362 @@
+html,
+body {
+	color: #333;
+	margin: 0;
+	height: 100%;
+	font-family: "Myriad Set Pro", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: normal;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+a,
+label,
+button,
+input,
+select {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+	border: 0;
+}
+
+body {
+	background: #f9f9f9;
+	color: #666;
+}
+
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+button,
+fieldset,
+form,
+input,
+legend,
+textarea,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #08acee;
+}
+
+button {
+	outline: 0;
+}
+
+img {
+	border: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+	font: inherit;
+	color: inherit;
+	outline: none;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	color: #666;
+}
+
+.fn{
+	clear: both;
+	height: 60px;
+	overflow: hidden
+}
+.cn{
+	clear: both;
+	height: 60px;
+	overflow: hidden
+}
+.ul{
+	clear: both;
+	height: 10px;
+	overflow: hidden
+}
+/* ------------------登录页面----------------------*/
+
+/*顶部显示*/
+.top{
+	width:100%;
+	height:200px;
+	/*border:1px solid red;*/
+}
+.top_title{
+	width:35%;
+	height:20px;
+	border: 1px solid yellow;
+	line-height: 20px;
+	text-align: center;
+	margin-top: 15%;
+	margin-left: 5%;
+}
+.top_title span{
+	font-size: 24px;
+}
+/*卡片风格tab*/
+
+
+
+
+/*底部导航*/
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 9999;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+	background-color: gainsboro;
+	height: 70px;
+}
+
+.footer a {
+	position: relative;
+	display: block;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	text-align: center;
+	color: gray;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.active {
+	color: black;
+}
+
+.active.on {
+	color: dodgerblue;
+}
+
+.footer img {
+	width: 25px;
+	height: 25px;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	color: dodgerblue;
+	text-decoration: underline;
+	text-decoration: none;
+}
+
+
+/* ------------------enroll登录首页----------------------*/
+.main{
+	width:100%;
+	height:100%;
+	background-color:white;
+}
+.main_title{
+	width:50%;
+	height:150px;
+	/*border:1px solid red;*/
+	margin: auto;
+	/*padding-top:20% ;*/
+}
+.main_title_img{
+	width:25%;
+	height:30%;
+	/*border:1px solid green;*/
+	float:left;
+	margin-top:50%;
+}
+.main_title_img img{
+	width:100%;
+	height:100%;
+	
+}
+.main_title_span{
+	width:70%;
+	height:40px;
+	/*border:1px solid green;*/
+	text-align: center;
+	float:right;
+	margin-top:50%;
+}
+
+.main_title_span span{
+	font-size:28px;
+	color:black;
+	line-height: 40px;
+}
+.main-content{
+	width:100%;
+	height:300px;
+/*	border:1px solid green;*/
+}
+
+
+
+/* 登录页面中心 */
+
+.aui-flexView {
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+
+}
+
+.aui-scrollView {
+	width: 100%;
+	height: 100%;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	position: relative;
+	margin-top: 0;
+
+}
+
+.aui-code-box {
+	padding: 20px 0;
+	text-align: center;
+	float: left;
+	width:100%;
+	/*border:1px solid red;*/
+}
+
+.aui-code-box button {
+	background: #ff6849;
+	height: 45px;
+	line-height: 45px;
+	border: none;
+	color: #fff;
+	border-radius: 4px;
+	width: 100%;
+	font-size: 0.98rem;
+}
+
+.aui-code-line {
+	color: #cccccc;
+	font-size: 0.85rem;
+	position: relative;
+	width: 100%;
+	background: #fff;
+	/* padding-top: 10px; */
+	padding: 0 20px;
+	border-radius: 5px 5px 5px 5px;
+	float:left;
+	border:1px solid gainsboro;
+	
+
+	
+}
+
+.aui-code-line {
+	position: relative;
+}
+
+.aui-code-line:after {
+	content: '';
+	
+	z-index: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px solid #D9D9D9;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
+	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+}
+
+.aui-code-line-input {
+	padding: 10px 0;
+	height: 50px;
+	width: 100%;
+	font-size: 14px;
+	background: none;
+	border: none;
+	color: #333;
+	/*border:1px solid red;*/
+
+
+}
+
+.aui-code-line i{
+	font-size: 24px;
+	line-height: 50px;
+	float:left;
+}
+
+
+
+.aui-code-btn {
+	padding-top: 30px;
+	margin: 0 20px;
+}
+#login_btu{
+	margin-top: 30px;
+}
+#registe_btu{
+	background-color: limegreen;
+	margin-top: -10px;
+}

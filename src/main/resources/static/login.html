@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="iconfont/iconfont.css">
+
+		<title>登录页面</title>
+	</head>
+
+	<body>
+		<!--<div class="main">-->
+	<!--	<form class="login-form" method="post" novalidate>-->
+			<!--
+                	作者：offline
+                	时间：2019-09-25
+                	描述：标题
+                -->
+			<div class="main_title">
+				<div class="main_title_img"><img src="img/logo.png"></div>
+				<div class="main_title_span"><span>宽域信用</span></div>
+			</div>
+			<!--输入框-->
+			<div class="cn"></div>
+			<section class="aui-flexView">
+				<section class="aui-scrollView">
+					<div class="aui-code-box">
+						<form id="form-login">
+						<p class="aui-code-line" style="">
+							<i class="Hui-iconfont Hui-iconfont-user2"></i>
+							<input type="text" class="aui-code-line-input" value="" name="username" id="phone" autocomplete="off" placeholder="请输入手机号/用户名" style="border-top:none;width:80%;float:right;">
+						</p>
+						<div class=""></div>
+						<p class="aui-code-line aui-code-line-clear" style="border-top:;margin-top:10px;">
+
+							<i class="Hui-iconfont Hui-iconfont-suoding"></i>
+
+							<i class="aui-show  operate-eye-open"></i>
+							<input type="password" class="aui-code-line-input password" name="password" id="password" placeholder="密码" value="" style="margin-left:px;width:80%;float:right;">
+						</p>
+						<a href="forget_password.html">
+							<div style="float:right;height:25px;margin-top:15px;color:gray;font-size: 14px;">
+								<span>忘记密码？</span>
+							</div>
+						</a>
+						<div class="ul"></div>
+
+						<div class="aui-code-btn">
+							<button type="button"  id="login_btu" style="background-color:dodgerblue;">登录</button>
+						</div>
+						</form>
+						<a href="registe.html">
+							<div class="aui-code-btn">
+								<button id="registe_btu">注册</button>
+							</div>
+						</a>
+					</div>
+					
+				</section>
+			</section>
+			<script type="text/javascript" src="js/jquery.min.js"></script>
+			<script type="text/javascript">
+					$("#login_btu").click(function(){
+						$.ajax({
+							"url":"/user/login",
+							"data":$("#form-login").serialize(),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+							"type":"post",
+							"dataType":"json",
+							"success":function(result) {
+								if (result.state == 20) {
+									alert("登录成功！");
+								} else {
+									alert(result.message);
+								}
+							}
+						});
+					});
+			
+			
+			</script>
+			
+		<!--</form>-->
+
+		<!--</div>-->
+	</body>
+
+</html>

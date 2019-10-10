@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="iconfont/iconfont.css">
+		<script type="text/javascript" src="tesr.js"></script>
+		<title>个人注册页面</title>
+	</head>
+
+	<body>
+		<!-- <form class="login-form" method="post" novalidate> -->
+			<!--
+                	作者：offline
+                	时间：2019-09-25
+                	描述：顶部
+               -->
+			<div class="registe_top">
+				<a href="login.html">
+					<div id="" class="active">
+						<i class="Hui-iconfont Hui-iconfont-arrow2-left"style="color:white;"></i>
+					</div>
+				</a>
+				<a href="">
+					<div id="" class="active" style="font-size: 20px;">个人注册</div>
+				</a>
+				<a href="business_registe.html">
+					<div id="" class="active">企业注册</div>
+				</a>
+			</div>
+			<!--
+            	作者：offline
+            	时间：2019-09-25
+            	描述：中心文本
+            -->
+			<div class="cb"></div>
+			<section class="aui-flexView" >
+				<div class="aui-sign-form" style="height:100%;">
+				
+					<form id="form-reg">
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="username" id="username" autocomplete="off" placeholder="请输入登录名称">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="rUsername" id="rUsername" autocomplete="off" placeholder="请输入您的真实名称">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="idCard" id="idCard" autocomplete="off" placeholder="请输入您的真实身份证号">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="phone" id="phone" autocomplete="off" placeholder="请输入手机号码">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="code" id="code1" autocomplete="off" placeholder="请输入验证码">
+							</div>
+							<div class="aui-code">
+								<input  name="btnSendCode1" id="btnSendCode1" type="button" class="btn btn-default" value="免费获取" onClick="sendMessage1()" />
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="email" id="email" autocomplete="off" placeholder="请输入邮箱信息">
+							</div>
+						</div>
+						
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="password" id="password" autocomplete="off" placeholder="请输入密码（数字、字母组合）">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="rPassword" id="password" autocomplete="off" placeholder="请重复输入密码（数字、字母组合）">
+							</div>
+						</div>
+						<button id="btn-reg" type="button" class="aui-sign-login" onClick="binding()">注册</button>
+					
+					</form>
+
+				</div>
+			</section>
+
+		<!-- </form> -->
+
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$("#btn-reg").click(function(){
+			$.ajax({
+				"url":"/user/add_user",
+				"data":$("#form-reg").serialize(),
+				"type":"post",
+				"dataType":"json",
+				"success":function(result) {
+					if (result.state == 20) {
+						alert("注册成功！");
+					} else {
+						alert(result.message);
+					}
+				}
+			});
+		});
+		
+		
+	</script>
+	<script type="text/javascript">
+	$("#btnSendCode1").click(function(){
+			$.ajax({
+				"url":"user/send",
+				"data":{
+					"phone":$("#phone").val()
+				},
+				"type":"post",
+				"dataType":"json",
+				"success":function(result) {
+					if (result.state == 20) {
+						  alert("发送验证码成功！");
+					} else {
+						alert(result.message);
+					}
+				}
+			});
+		
+	})
+</script>
+</html>

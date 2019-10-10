@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="iconfont/iconfont.css">
+		<title>企业注册页面</title>
+	</head>
+
+	<body>
+		
+			<!--
+                	作者：offline
+                	时间：2019-09-25
+                	描述：顶部
+               -->
+			<div class="registe_top">
+				<a href="login.html">
+					<div id="" class="active">
+						<i class="Hui-iconfont Hui-iconfont-arrow2-left"style="color:white;"></i>
+					</div>
+				</a>
+				<a href="">
+					<div id="" class="active" style="font-size: 20px;">企业注册</div>
+				</a>
+				<a href="registe.html">
+					<div id="" class="active">个人注册</div>
+				</a>
+				</div>
+				<!--
+            	作者：offline
+            	时间：2019-09-25
+            	描述：中心文本
+            -->
+				<div class="cb"></div>
+				<section class="aui-flexView" >
+					<div class="aui-sign-form" style="height:100%;">
+					<form id="form-reg">
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="companyName" id="companyName" autocomplete="off" placeholder="请输入企业名称">
+							</div>
+						</div>
+						<div class="aui-flex">
+							<div class="aui-flex-box">
+								<input type="text" name="userName" id="userName" autocomplete="off" placeholder="请输入法人名称">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="idCard" id="idCard" autocomplete="off" placeholder="统一社会信用代码">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text"name="phone" id="phone" autocomplete="off" placeholder="请输入手机号码">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="code" id="code" autocomplete="off" placeholder="请输入验证码">
+							</div>
+							<div class="aui-code">
+								<input name="btnSendCode1" id="btnSendCode1" type="button" class="btn btn-default" value="免费获取" onClick="sendMessage1()" />
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="email" id="email" autocomplete="off" placeholder="请输入邮箱信息">
+							</div>
+						</div>
+						
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								
+								<input type="text" name="password" id="password" autocomplete="off" placeholder="请输入密码（数字、字母组合）">
+							</div>
+						</div>
+						<div class="aui-flex">
+
+							<div class="aui-flex-box">
+								<input type="text" name="rPassword" id="password" autocomplete="off" placeholder="请重复输入密码（数字、字母组合）">
+							</div>
+						</div>
+						
+						
+						
+						<button id="btn-reg" type="submit" class="aui-sign-login">注册</button>
+
+					</form>
+
+				</div>
+			</section>
+
+		
+
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+			$("#btn-reg").click(function(){
+				alert("asdfsadf")
+				$.ajax({
+					"url":"/company/add_company",
+					"data":$("#form-reg").serialize(),
+					"type":"post",
+					"dataType":"json",
+					"success":function(result) {
+						if (result.state == 20) {
+							alert("注册成功！");
+						} else {
+							alert(result.message);
+						}
+					}
+				});
+			});
+	
+	
+	</script>
+	<script type="text/javascript">
+	$("#btnSendCode1").click(function(){
+			$.ajax({
+				"url":"company/send_company",
+				"data":{
+					"phone":$("#phone").val()
+				},
+				"type":"post",
+				"dataType":"json",
+				"success":function(result) {
+					if (result.state == 20) {
+						  alert("发送验证码成功！");
+					} else {
+						alert(result.message);
+					}
+				}
+			});
+		
+	})
+</script>
+	
+	
+	
+	
+	<script type="text/javascript">
+		var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
+		var count = 60;
+		var InterValObj1;
+		var curCount1;
+
+		function sendMessage1() {
+			curCount1 = count;
+			var phone = $.trim($('#phone').val());
+			if(!phoneReg.test(phone)) {
+				alert(" 请输入有效的手机号码");
+				return false;
+			}
+
+			$("#btnSendCode1").attr("disabled", "true");
+			$("#btnSendCode1").val(+curCount1 + "秒再获取");
+			InterValObj1 = window.setInterval(SetRemainTime1, 1000);
+
+		}
+
+		function SetRemainTime1() {
+			if(curCount1 == 0) {
+				window.clearInterval(InterValObj1);
+				$("#btnSendCode1").removeAttr("disabled");
+				$("#btnSendCode1").val("重新发送");
+			} else {
+				curCount1--;
+				$("#btnSendCode1").val(+curCount1 + "秒再获取");
+			}
+		}
+	</script>
+
+</html>
