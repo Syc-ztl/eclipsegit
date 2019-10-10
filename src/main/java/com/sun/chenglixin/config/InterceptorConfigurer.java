@@ -1,6 +1,9 @@
 package com.sun.chenglixin.config;
 
 import java.util.ArrayList;
+/**
+ * 拦截器的配置类
+ */
 import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
