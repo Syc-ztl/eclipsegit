@@ -1,5 +1,7 @@
 package com.sun.chenglixin.mapper;
 
+import java.util.Date;
+
 import com.sun.chenglixin.entity.User;
 
 import io.lettuce.core.dynamic.annotation.Param;
@@ -32,7 +34,10 @@ public interface UserMapper {
 	 * @param phone
 	 * @return
 	 */
-	Integer  updatePasswordByPhone(@Param("phone")String phone,@Param("password")String password);
+	Integer  updatePasswordByPhone(@Param("phone")String phone,
+									@Param("password")String password,
+									@Param("modifiedUser")String modifiedUser,
+									@Param("modifiedTime")Date modifiedTime);
 	
 	
 	/**
@@ -41,6 +46,9 @@ public interface UserMapper {
 	 * @param newphone 新电话
 	 * @return
 	 */
-	Integer  updatePhone(@Param("oldphone")String oldphone,@Param("newphone")String newphone);
+	Integer  updatePhone(@Param("oldphone")String oldphone,
+						@Param("newphone")String newphone,
+						@Param("modifiedUser")String modifiedUser,
+						@Param("modifiedTime")Date modifiedTime);
 	
 }

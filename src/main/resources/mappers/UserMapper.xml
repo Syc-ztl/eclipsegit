@@ -16,14 +16,14 @@
 			username,
 			id_card,phone,
 			email,avatar,password,
-			salt,authority,
+			salt,authority,credit_score
 			created_user,created_time,
 			modified_user,modified_time
 		)VALUES(
 			#{username},
 			#{idCard},#{phone},
 			#{email},#{avatar},
-			#{password},
+			#{password},#{creditScore}
 			#{salt},#{authority},#{createdUser},
 			#{createdTime},#{modifiedUser},
 			#{modifiedTime}
@@ -43,7 +43,9 @@
 		UPDATE 
 			t_user
 		SET
-			password=#{password}
+			password=#{password},
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
 		WHERE 
 			phone=#{phone}
 	</update>
@@ -61,7 +63,9 @@
 		UPDATE 
 			t_user
 		SET
-			phone=#{newphone}
+			phone=#{newphone},
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
 		WHERE 
 			phone=#{oldphone}
 	

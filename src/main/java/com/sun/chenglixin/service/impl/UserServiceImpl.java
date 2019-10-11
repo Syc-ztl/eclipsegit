@@ -60,6 +60,7 @@ public class UserServiceImpl implements IUserService {
 		user.setPassword(md5password);
 
 		user.setAuthority(1);
+		user.setCreditScore("0");
 		// 补全4项日志数据
 		user.setCreatedTime(new Date());
 		user.setCreatedUser(user.getUsername());
@@ -132,7 +133,8 @@ public class UserServiceImpl implements IUserService {
 		}
 		String salt = user.getSalt();
 		String newPassword = getMd5Password(password, salt);
-		Integer row = updatePasswordByPhone(phone, newPassword);
+		String modifiedUser=user.getUsername();
+		Integer row = updatePasswordByPhone(phone, newPassword,modifiedUser,new Date());
 		if (!row.equals(1)) {
 			throw new UpdateException("数据更新异常");
 		}
@@ -152,7 +154,8 @@ public class UserServiceImpl implements IUserService {
 		if (!code.equals(oldCode)) {
 			throw new CodeCheckOutException("验证码输入错误，请重新输入");
 		}
-		Integer row = updatePhone(oldphone, newphone);
+		String modifiedUser=user.getUsername();
+		Integer row = updatePhone(oldphone, newphone, modifiedUser, new Date());
 		if (!row.equals(1)) {
 			throw new UpdateException("用户数据修改异常，请联系管理员");
 		}
@@ -182,8 +185,8 @@ public class UserServiceImpl implements IUserService {
 	 * @param newphone
 	 * @return
 	 */
-	private Integer updatePhone(String oldphone, String newphone) {
-		return mapper.updatePhone(oldphone, newphone);
+	private Integer updatePhone(String oldphone, String newphone,String modifiedUser,Date modifiedTime) {
+		return mapper.updatePhone(oldphone, newphone, modifiedUser, modifiedTime);
 	}
 
 	/**
@@ -192,8 +195,8 @@ public class UserServiceImpl implements IUserService {
 	 * @param phone
 	 * @return
 	 */
-	private Integer updatePasswordByPhone(String phone, String password) {
-		return mapper.updatePasswordByPhone(phone, password);
+	private Integer updatePasswordByPhone(String phone, String password,String modifiedUser,Date modifiedTime) {
+		return mapper.updatePasswordByPhone(phone, password, modifiedUser, modifiedTime);
 	}
 
 	/**

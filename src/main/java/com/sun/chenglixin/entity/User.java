@@ -5,8 +5,13 @@ package com.sun.chenglixin.entity;
  *
  */
 public class User extends BaseEntity{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer uid;
 	private String username;
+	private String creditScore ;
 	private String idCard;
 	private String phone;
 	private String email;
@@ -14,6 +19,18 @@ public class User extends BaseEntity{
 	private String password;
 	private String salt;
 	private int authority;
+	
+	
+	
+	public String getCreditScore() {
+		return creditScore;
+	}
+	public void setCreditScore(String creditScore) {
+		this.creditScore = creditScore;
+	}
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 	public int getUid() {
 		return uid;
 	}
@@ -92,11 +109,13 @@ public class User extends BaseEntity{
 	}
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", username=" + username +", idCard=" + idCard
-				+ ", phone=" + phone + ", email=" + email + ", avatar=" + avatar + ", password=" + password + ", salt=" + salt + ", authority=" + authority + ", getCreatedUser()="
-				+ getCreatedUser() + ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()="
-				+ getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
+		return "User [uid=" + uid + ", username=" + username + ", creditScore=" + creditScore + ", idCard=" + idCard
+				+ ", phone=" + phone + ", email=" + email + ", avatar=" + avatar + ", password=" + password + ", salt="
+				+ salt + ", authority=" + authority + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()="
+				+ getCreatedTime() + ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()="
+				+ getModifiedTime() + "]";
 	}
+	
 	
 
 	

@@ -5,9 +5,14 @@ package com.sun.chenglixin.entity;
  *
  */
 public class Company extends BaseEntity {
-	 private  Integer cid;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private  Integer cid;
 	 private  String userName;
 	 private String companyName;
+	 private String creditScore ;
 	private String idCard;
 	private String phone;
 	private String email;
@@ -22,7 +27,18 @@ public class Company extends BaseEntity {
 	public void setCid(Integer cid) {
 		this.cid = cid;
 	}
-	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getCreditScore() {
+		return creditScore;
+	}
+	public void setCreditScore(String creditScore) {
+		this.creditScore = creditScore;
+	}
 	public String getUsername() {
 		return userName;
 	}
@@ -102,12 +118,13 @@ public class Company extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "Company [cid=" + cid + ", username=" + userName + ", companyName=" + companyName + ", idCard=" + idCard
-				+ ", phone=" + phone + ", email=" + email + ", password=" + password + ", authority=" + authority
-				+ ", salt=" + salt + ", avatar=" + avatar + ", getCreatedUser()=" + getCreatedUser()
-				+ ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()=" + getModifiedUser()
-				+ ", getModifiedTime()=" + getModifiedTime() + "]";
+		return "Company [cid=" + cid + ", userName=" + userName + ", companyName=" + companyName + ", creditScore="
+				+ creditScore + ", idCard=" + idCard + ", phone=" + phone + ", email=" + email + ", password="
+				+ password + ", authority=" + authority + ", salt=" + salt + ", avatar=" + avatar
+				+ ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
+				+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
 	}
+	
 	
 
 	

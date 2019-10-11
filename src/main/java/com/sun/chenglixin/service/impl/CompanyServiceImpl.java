@@ -35,7 +35,10 @@ public class CompanyServiceImpl implements ICompanyService {
 	CompanyMapper mapper;
 	@Autowired
 	RedisTemplate<String, String> redisTemplate;
-
+	
+	/**
+	 * 添加一个企业
+	 */
 	public void saveCompany(Company company, String code)
 			throws CodeCheckOutException, InsertException, UsernameDuplicateException {
 		String companyName = company.getCompanyName();
@@ -53,6 +56,7 @@ public class CompanyServiceImpl implements ICompanyService {
 		String md5password = getMd5Password(password, salt);
 		company.setPassword(md5password);
 		company.setAuthority(1);
+		company.setCreditScore("0");
 		company.setCreatedTime(new Date());
 		company.setCreatedUser(company.getUsername());
 		company.setModifiedTime(new Date());
@@ -114,7 +118,8 @@ public class CompanyServiceImpl implements ICompanyService {
 		}
 		String salt = company.getSalt();
 		String newPassword = getMd5Password(password, salt);
-		Integer row = updatePassword(phone, newPassword);
+		String modifiedUser=company.getUsername();
+		Integer row =updatePassword(phone, newPassword, modifiedUser, new  Date());
 		if (!row.equals(1)) {
 			throw new UpdateException("数据更新异常");
 		}
@@ -134,7 +139,8 @@ public class CompanyServiceImpl implements ICompanyService {
 		if (!code.equals(oldCode)) {
 			throw new CodeCheckOutException("验证码输入错误，请重新输入");
 		}
-		Integer row = updatePhone(oldphone, newPhone);
+		String modifiedUser=company.getUsername();
+		Integer row = updatePhone(oldphone, newPhone, modifiedUser,new Date());
 		if (!row.equals(1)) {
 			throw new UpdateException("数据更新异常，请联系管理员");
 		}
@@ -193,8 +199,8 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @param password
 	 * @return
 	 */
-	private Integer updatePassword(String phone, String password) {
-		return mapper.updatePassword(phone, password);
+	private Integer updatePassword(String phone, String password,String modifiedUser,Date modifiedTime) {
+		return mapper.updatePassword(phone, password, modifiedUser, modifiedTime);
 	}
 
 	/**
@@ -204,8 +210,8 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @param newphone
 	 * @return
 	 */
-	private Integer updatePhone(String oldphone, String newphone) {
-		return mapper.updatePhone(oldphone, newphone);
+	private Integer updatePhone(String oldphone, String newphone,String modifiedUser,Date modifiedTime) {
+		return mapper.updatePhone(oldphone, newphone, modifiedUser, modifiedTime);
 	}
 
 }
