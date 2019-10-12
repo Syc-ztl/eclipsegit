@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.PromiseMapper">
+	
+	
+	<!--/**
+	 * 根据start和end进行分页查询
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	UserPromise  findUserPromise(Integer start,Integer end);  -->
+	<select id="findUserPromise" resultType="com.sun.chenglixin.entity.UserPromise">
+		SELECT
+			udpid,title,
+			type,is_promise,time
+		FROM 
+			t_user_promise
+		LIMIT
+			#{strat},#{end}
+	</select>
+	
+	
+</mapper>

@@ -7,7 +7,7 @@ import java.util.Date;
  * @author lenveo
  *
  */
-public class Headline extends BaseEntity {
+public class HeadLine extends BaseEntity {
 
 	/**
 	 * 
@@ -66,7 +66,7 @@ public class Headline extends BaseEntity {
 					return false;
 				if (getClass() != obj.getClass())
 					return false;
-				Headline other = (Headline) obj;
+				HeadLine other = (HeadLine) obj;
 				if (hid == null) {
 					if (other.hid != null)
 						return false;

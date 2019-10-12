@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.HeadLineMapper">
+	
+	<!--/**
+	 * 根据分页查询进行查询信用头条的简版信息
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	HeadLine	findByLimit(@Param("start")Integer start,@Param("end")Integer end);  -->
+	<select id="findHeadLineByLimit" resultType="com.sun.chenglixin.mapper.HeadLineMapper">
+		SELECT 
+			dhid,title ,
+			headline_time ,
+			avatar
+		FROM 
+			t_headline
+		LIMIT
+			#{start},#{end}
+	</select>
+	
+	
+	
+</mapper>
