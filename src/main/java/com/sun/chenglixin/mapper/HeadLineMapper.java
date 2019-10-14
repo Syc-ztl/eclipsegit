@@ -10,6 +10,7 @@ import com.sun.chenglixin.entity.HeadLine;
  *
  */
 public interface HeadLineMapper {
+	
 	/**
 	 * 根据分页查询进行查询信用头条的简版信息
 	 * @param start

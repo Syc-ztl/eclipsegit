@@ -16,7 +16,7 @@ public class HeadLine extends BaseEntity {
 			private  Integer hid;
 			private Integer dhid ;
 			private String title ;
-			private Date headline_time;
+			private Date headlinTime;
 			private String avatar;
 			public Integer getHid() {
 				return hid;
@@ -39,12 +39,15 @@ public class HeadLine extends BaseEntity {
 			public void setTitle(String title) {
 				this.title = title;
 			}
-			public Date getHeadline_time() {
-				return headline_time;
+			
+			public Date getHeadlinTime() {
+				return headlinTime;
 			}
-			public void setHeadline_time(Date headline_time) {
-				this.headline_time = headline_time;
+
+			public void setHeadlinTime(Date headlinTime) {
+				this.headlinTime = headlinTime;
 			}
+
 			public String getAvatar() {
 				return avatar;
 			}
@@ -77,11 +80,13 @@ public class HeadLine extends BaseEntity {
 
 			@Override
 			public String toString() {
-				return "Headline [hid=" + hid + ", dhid=" + dhid + ", title=" + title + ", headline_time="
-						+ headline_time + ", avatar=" + avatar + ", getCreatedUser()=" + getCreatedUser()
-						+ ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()=" + getModifiedUser()
-						+ ", getModifiedTime()=" + getModifiedTime() + "]";
+				return "HeadLine [hid=" + hid + ", dhid=" + dhid + ", title=" + title + ", headlinTime=" + headlinTime
+						+ ", avatar=" + avatar + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()="
+						+ getCreatedTime() + ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()="
+						+ getModifiedTime() + "]";
 			}
+
+			
 			
 			
 }

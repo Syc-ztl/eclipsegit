@@ -7,7 +7,7 @@ public class DetailsHeadline extends BaseEntity {
 			private Integer pid;
 			private String title;
 			private String source ;
-			private Date issue_time ;
+			private Date issueTime ;
 			private Integer reading ;
 			private String body;
 			public Integer getDhid() {
@@ -37,12 +37,15 @@ public class DetailsHeadline extends BaseEntity {
 			public void setSource(String source) {
 				this.source = source;
 			}
-			public Date getIssue_time() {
-				return issue_time;
+			
+			public Date getIssueTime() {
+				return issueTime;
 			}
-			public void setIssue_time(Date issue_time) {
-				this.issue_time = issue_time;
+
+			public void setIssueTime(Date issueTime) {
+				this.issueTime = issueTime;
 			}
+
 			public Integer getReading() {
 				return reading;
 			}
@@ -82,10 +85,12 @@ public class DetailsHeadline extends BaseEntity {
 			@Override
 			public String toString() {
 				return "DetailsHeadline [dhid=" + dhid + ", pid=" + pid + ", title=" + title + ", source=" + source
-						+ ", issue_time=" + issue_time + ", reading=" + reading + ", body=" + body
-						+ ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
-						+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
+						+ ", issueTime=" + issueTime + ", reading=" + reading + ", body=" + body + ", getCreatedUser()="
+						+ getCreatedUser() + ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()="
+						+ getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
 			}
+
+			
 			
 			
 			

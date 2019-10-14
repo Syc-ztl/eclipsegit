@@ -13,7 +13,7 @@
 	<select id="findHeadLineByLimit" resultType="com.sun.chenglixin.mapper.HeadLineMapper">
 		SELECT 
 			dhid,title ,
-			headline_time ,
+			headline_time as headlineTime,
 			avatar
 		FROM 
 			t_headline
