@@ -9,6 +9,8 @@ import java.util.Date;
  *
  */
 public class CompanyPromise extends BaseEntity {
+	
+
 	/**
 	 * 
 	 */
@@ -20,8 +22,18 @@ public class CompanyPromise extends BaseEntity {
 	private Integer isPromise;
 	private Date time;
 
-	public CompanyPromise() {
-		super();
+	
+
+	public CompanyPromise(String createdUser, Date createdTime, String modifiedUser,
+											Date modifiedTime,Integer cdpid, 
+											String title, String type, 
+											Integer isPromise, Date time) {
+		super(createdUser, createdTime, modifiedUser, modifiedTime);
+		this.cdpid = cdpid;
+		this.title = title;
+		this.type = type;
+		this.isPromise = isPromise;
+		this.time = time;
 	}
 
 	public Integer getPid() {

@@ -1,11 +1,15 @@
 package com.sun.chenglixin.entity;
+
+import java.util.Date;
+
 /**
  * 企业相关的信息
  * @author lenveo
  *
  */
 public class Company extends BaseEntity {
-	 /**
+	
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -20,7 +24,10 @@ public class Company extends BaseEntity {
 	private  Integer authority;
 	private String salt;
 	private String avatar;
-	
+	 public Company(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+			super(createdUser, createdTime, modifiedUser, modifiedTime);
+			// TODO Auto-generated constructor stub
+		}
 	public Integer getCid() {
 		return cid;
 	}

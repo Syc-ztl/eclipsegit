@@ -1,10 +1,14 @@
 package com.sun.chenglixin.entity;
+
+import java.util.Date;
+
 /**
  * 信用修复申请书实体类
  * @author lenveo
  *
  */
 public class RepairApplicat extends BaseEntity {
+
 
 	/**
 	 * 
@@ -20,6 +24,11 @@ public class RepairApplicat extends BaseEntity {
 	private String applicatAvatar;
 	private String promiseAvatar;
 	private String phone;
+	
+	public RepairApplicat(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+		super(createdUser, createdTime, modifiedUser, modifiedTime);
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getRaid() {
 		return raid;

@@ -19,10 +19,10 @@ public class CompanymapperTest {
 	
 	@Test
 	public void addUser() {
-		Company c=new Company();
-		c.setCompanyName("呈祥农业开发有限公司");
-		Integer row=mapper.addCompany(c);
-		System.out.println(row);
+		//Company c=new Company();
+//		c.setCompanyName("呈祥农业开发有限公司");
+//		Integer row=mapper.addCompany(c);
+//		System.out.println(row);
 	}
 	
 	

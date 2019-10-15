@@ -1,10 +1,14 @@
 package com.sun.chenglixin.entity;
+
+import java.util.Date;
+
 /**
  * 个人的相关信息
  * @author lenveo
  *
  */
 public class User extends BaseEntity{
+	
 	/**
 	 * 
 	 */
@@ -20,7 +24,10 @@ public class User extends BaseEntity{
 	private String salt;
 	private int authority;
 	
-	
+	public User(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+		super(createdUser, createdTime, modifiedUser, modifiedTime);
+		// TODO Auto-generated constructor stub
+	}
 	
 	public String getCreditScore() {
 		return creditScore;

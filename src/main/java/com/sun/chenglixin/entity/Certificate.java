@@ -7,6 +7,7 @@ import java.util.Date;
  *
  */
 public class Certificate extends BaseEntity{
+		
 		/**
 	 * 
 	 */
@@ -19,10 +20,11 @@ public class Certificate extends BaseEntity{
 		private Date successTime;
 		
 		
-		
-		public Certificate() {
-			super();
+		public Certificate(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+			super(createdUser, createdTime, modifiedUser, modifiedTime);
+			// TODO Auto-generated constructor stub
 		}
+		
 		public Integer getCid() {
 			return cid;
 		}

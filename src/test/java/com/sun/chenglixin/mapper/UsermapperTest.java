@@ -23,17 +23,17 @@ public class UsermapperTest {
 	
 	@Test
 	public void addUser() {
-		User user=new User();
+		//User user=new User();
 
-
-		user.setUsername("jerry");
-		user.setIdCard("500221199702114531");
-		user.setUsername("tom");
-		user.setPassword("123456");
-		user.setEmail("3366@qq.com");
-		user.setPhone("1234567");
-		Integer row=mapper.addUser(user);
-		System.out.println(row);
+//
+//		user.setUsername("jerry");
+//		user.setIdCard("500221199702114531");
+//		user.setUsername("tom");
+//		user.setPassword("123456");
+//		user.setEmail("3366@qq.com");
+//		user.setPhone("1234567");
+//		Integer row=mapper.addUser(user);
+//		System.out.println(row);
 	}
 	
 	
@@ -52,16 +52,16 @@ public class UsermapperTest {
 	
 	@Test
 	public void addUsers() {
-		User user=new User();
-
-
-		user.setUsername("tom");
-		user.setIdCard("500221199702114531");
-		user.setUsername("je");
-		user.setPassword("123456");
-		user.setEmail("3366@qq.com");
-		user.setPhone("1234567");
-		service.saveUser(user,"1234");
+//		User user=new User();
+//
+//
+//		user.setUsername("tom");
+//		user.setIdCard("500221199702114531");
+//		user.setUsername("je");
+//		user.setPassword("123456");
+//		user.setEmail("3366@qq.com");
+//		user.setPhone("1234567");
+//		service.saveUser(user,"1234");
 		
 	}
 	

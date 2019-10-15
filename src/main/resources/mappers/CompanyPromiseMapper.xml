@@ -3,6 +3,65 @@
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper  namespace="com.sun.chenglixin.mapper.CompanyPromiseMapper">
 	
+	<!--	/**
+	 * 添加一个企业承诺书简版
+	 * @param companyPromise
+	 * @return
+	 */
+	Integer  addCompanyPromise(CompanyPromise companyPromise);  -->
+	<insert id="addCompanyPromise" useGeneratedKeys="true" keyProperty="pid">
+		INSERT INTO  	t_company_promise
+		(
+			cdpid,title ,
+			type ,is_promise,
+			time ,created_user,
+			created_time,modified_user,
+			modified_time
+		)VALUES(
+			#{cdpid},#{title},
+			#{type},#{isPromise},
+			#{time},#{createdUser},
+			#{createdTime},#{modifiedUser},
+			#{modifiedTime}
+		
+		)
+	
+	</insert>
+	
+	
+	<!--	/**
+	 * 添加一个企业承诺书数据
+	 * @param companyDetailsProise
+	 * @return
+	 */
+	Integer addCompanyDetailsPromise(CompanyDetailsPromise companyDetailsProise);  -->
+	<insert id="addCompanyDetailsPromise" useGeneratedKeys="true" keyProperty="cdpid">
+		INSERT INTO t_company_details_promise
+		(
+			title ,type,company_name,
+			company_idcard,punish_id,
+			body,time,username ,
+			created_user ,created_time,
+			modified_user,modified_time 
+		)VALUES(
+			#{title},#{type},#{companyName},
+			#{companyIdCard},#{punishId},
+			#{body},#{time},#{username} ,
+			#{createduser} ,#{createdTime},
+			#{modifiedUuser},#{modifiedTime}
+		)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<!--/**
 	 * 根据start和end进行分页查询企业承诺书

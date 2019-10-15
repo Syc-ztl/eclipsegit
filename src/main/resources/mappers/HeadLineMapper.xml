@@ -3,6 +3,73 @@
  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper  namespace="com.sun.chenglixin.mapper.HeadLineMapper">
 	
+	<!--	/**
+	 * 根据信用头条添加一个简版信用头条
+	 * @param headLine
+	 * @return
+	 */
+	Integer addHeadLine(HeadLine headLine);  -->
+	<insert id="addHeadLine" useGeneratedKeys="true" keyProperty="hid">
+			INSERT INTO  t_headline
+			(
+				dhid ,title,headline_time,
+				avatar ,created_user,
+				created_time,modified_user,
+				modified_time
+			)VALUES(
+				#{dhid},#{title},#{headlineTime},
+				#{avatar} ,#{createdUser},
+				#{createdTime},#{modifiedUser},
+				#{modifiedTime}
+			)
+	</insert>
+	
+	
+	<!--/**
+	 * 根据信用头条添加一个详情版信用头条
+	 * @param detailsHeadLine
+	 * @return
+	 */
+	Integer  addDetailsHeadLine(DetailsHeadline detailsHeadLine);  -->
+	<insert id="addDetailsHeadLine" useGeneratedKeys="true"  keyProperty="dhid">
+		INSERT INTO t_details_headline
+		(
+			pid,title,source,issue_time,
+			reading,body,created_user,
+    		created_time ,modified_user ,
+    		modified_time  
+		)VALUES(
+				#{pid},#{title},#{source},#{issue_time},
+			#{reading},#{body},#{created_user},
+    		#{created_time} ,#{modified_user} ,
+    		#{modified_time}  
+		
+		
+		)
+	</insert>
+	
+	
+	
+	<!--/**
+	 * 添加图片
+	 * @param photo
+	 * @return
+	 */
+	Integer addPhoto(Photo photo);  -->
+	<insert id="addPhoto" useGeneratedKeys="true" keyProperty="pid">
+			INSERT INTO t_photo
+			(
+				dhid,avatar,created_user,created_time ,
+    			modified_user,modified_time
+			)VALUES(
+				#{dhid},#{avatar},#{createdUser},#{createdTime} ,
+    			#{modifiedUser},#{modifiedTime}
+			)
+	</insert>
+	
+	
+	
+	
 	<!--/**
 	 * 根据分页查询进行查询信用头条的简版信息
 	 * @param start

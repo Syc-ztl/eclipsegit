@@ -3,6 +3,8 @@ package com.sun.chenglixin.entity;
 import java.util.Date;
 
 public class DetailsHeadline extends BaseEntity {
+		
+
 			private Integer dhid;
 			private Integer pid;
 			private String title;
@@ -10,6 +12,12 @@ public class DetailsHeadline extends BaseEntity {
 			private Date issueTime ;
 			private Integer reading ;
 			private String body;
+			
+			public DetailsHeadline(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+				super(createdUser, createdTime, modifiedUser, modifiedTime);
+				// TODO Auto-generated constructor stub
+			}
+			
 			public Integer getDhid() {
 				return dhid;
 			}

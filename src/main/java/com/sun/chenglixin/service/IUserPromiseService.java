@@ -1,6 +1,8 @@
 package com.sun.chenglixin.service;
 
+import com.sun.chenglixin.entity.UserDetailsPromise;
 import com.sun.chenglixin.entity.UserPromise;
+import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.UserPromiseNotFoundException;
 
 /**
@@ -18,4 +20,12 @@ public interface IUserPromiseService {
 	 * @throws UserPromiseNotFoundException
 	 */
 	UserPromise seekUserPromise(Integer start,Integer end)throws UserPromiseNotFoundException;
+	
+	/**
+	 * 根据用户承诺书添加详情表和简版
+	 * @param userDetailsPromise
+	 * @throws InsertException
+	 */
+	void  saveUserPromise(UserDetailsPromise userDetailsPromise)throws InsertException;
+	
 }

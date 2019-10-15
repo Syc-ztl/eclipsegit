@@ -9,6 +9,8 @@ import java.util.Date;
  */
 public class HeadLine extends BaseEntity {
 
+	
+
 	/**
 	 * 
 	 */
@@ -18,6 +20,12 @@ public class HeadLine extends BaseEntity {
 			private String title ;
 			private Date headlinTime;
 			private String avatar;
+			
+			public HeadLine(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+				super(createdUser, createdTime, modifiedUser, modifiedTime);
+				// TODO Auto-generated constructor stub
+			}
+			
 			public Integer getHid() {
 				return hid;
 			}

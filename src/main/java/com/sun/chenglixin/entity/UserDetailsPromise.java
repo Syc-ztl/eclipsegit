@@ -18,10 +18,26 @@ public class UserDetailsPromise extends BaseEntity {
 	private String body;
 	private String userName;
 	private Date time;
-
-	public UserDetailsPromise() {
-		super();
+	private String type;
+	
+	
+	
+	
+	
+	public UserDetailsPromise(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+		super(createdUser, createdTime, modifiedUser, modifiedTime);
+		// TODO Auto-generated constructor stub
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
 
 	public Integer getUdpid() {
 		return udpid;
@@ -91,8 +107,11 @@ public class UserDetailsPromise extends BaseEntity {
 	@Override
 	public String toString() {
 		return "UserDetailsPromise [udpid=" + udpid + ", title=" + title + ", body=" + body + ", userName=" + userName
-				+ ", time=" + time + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
-				+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
+				+ ", time=" + time + ", type=" + type + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()="
+				+ getCreatedTime() + ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()="
+				+ getModifiedTime() + "]";
 	}
+
+	
 
 }

@@ -8,6 +8,7 @@ import java.util.Date;
  */
 public class CompanyDetailsPromise extends BaseEntity {
 	
+		
 			/**
 	 * 
 	 */
@@ -20,6 +21,19 @@ public class CompanyDetailsPromise extends BaseEntity {
 			private String body ;
 			private Date time;
 			private String username;
+			private String type;
+			
+			public CompanyDetailsPromise(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+				super(createdUser, createdTime, modifiedUser, modifiedTime);
+				// TODO Auto-generated constructor stub
+			}
+			
+			public String getType() {
+				return type;
+			}
+			public void setType(String type) {
+				this.type = type;
+			}
 			public Integer getCdpid() {
 				return cdpid;
 			}
@@ -95,10 +109,11 @@ public class CompanyDetailsPromise extends BaseEntity {
 			public String toString() {
 				return "CompanyDetailsPromise [cdpid=" + cdpid + ", title=" + title + ", companyName=" + companyName
 						+ ", companyIdCard=" + companyIdCard + ", punishId=" + punishId + ", body=" + body + ", time="
-						+ time + ", username=" + username + ", getCreatedUser()=" + getCreatedUser()
+						+ time + ", username=" + username + ", type=" + type + ", getCreatedUser()=" + getCreatedUser()
 						+ ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()=" + getModifiedUser()
 						+ ", getModifiedTime()=" + getModifiedTime() + "]";
 			}
+		
 			
 
 }

@@ -16,6 +16,18 @@ public class BaseEntity implements Serializable{
 	private Date createdTime;
 	private String modifiedUser;
 	private Date modifiedTime;
+	
+	
+	
+	
+	
+	public BaseEntity(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+		super();
+		this.createdUser = createdUser;
+		this.createdTime = createdTime;
+		this.modifiedUser = modifiedUser;
+		this.modifiedTime = modifiedTime;
+	}
 	public String getCreatedUser() {
 		return createdUser;
 	}

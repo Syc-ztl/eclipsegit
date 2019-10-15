@@ -1,9 +1,17 @@
 package com.sun.chenglixin.entity;
 
+import java.util.Date;
+
 public class Photo extends BaseEntity {
+	
 			private Integer pid ;
 			private Integer dhid;
 			private String avatar ;
+			
+			public Photo(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
+				super(createdUser, createdTime, modifiedUser, modifiedTime);
+				// TODO Auto-generated constructor stub
+			}
 			public Integer getPid() {
 				return pid;
 			}

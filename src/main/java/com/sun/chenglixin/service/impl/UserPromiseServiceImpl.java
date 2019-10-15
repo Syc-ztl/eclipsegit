@@ -1,11 +1,14 @@
 package com.sun.chenglixin.service.impl;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sun.chenglixin.entity.UserDetailsPromise;
 import com.sun.chenglixin.entity.UserPromise;
 import com.sun.chenglixin.mapper.UserPromiseMapper;
 import com.sun.chenglixin.service.IUserPromiseService;
+import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.UserPromiseNotFoundException;
 
 public class UserPromiseServiceImpl implements IUserPromiseService {
@@ -22,6 +25,27 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 		return userpromise;
 	}
 	
+	@Override
+	public void saveUserPromise(UserDetailsPromise userDetailsPromise) throws InsertException {
+		
+		Integer udpid=userDetailsPromise.getUdpid();
+		String title=userDetailsPromise.getTitle();
+		String type=userDetailsPromise.getType();
+		Date time=userDetailsPromise.getTime();
+		String userName=userDetailsPromise.getUserName();
+		UserPromise userPromise=new UserPromise(userName, new Date(),
+													userName, new Date(), 
+												udpid, title, type, 1, time);
+		Integer row=addUserPromise(userPromise);
+		if(!row.equals(1)) {
+			throw new InsertException("数据插入异常，请联系管理员");
+		}
+		
+		Integer line=addUserDetailsPromise(userDetailsPromise);
+		if(!line.equals(1)) {
+			throw new InsertException("数据插入异常，请联系管理员");
+		}
+	}
 	
 	
 	
@@ -34,5 +58,26 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 	private UserPromise  findUserPromise(Integer start,Integer end) {
 		return mapper.findUserPromise(start, end);
 	}
+
+	/**
+	 * 添加一个用户承诺书简版数据
+	 * @param userPromise
+	 * @return
+	 */
+	private Integer addUserPromise(UserPromise userPromise) {
+		return mapper.addUserPromise(userPromise);
+	}
+	
+	
+	/**
+	 * 添加一个用户承诺书数据
+	 * @param userDetailsPromise
+	 * @return
+	 */
+	private Integer addUserDetailsPromise(UserDetailsPromise userDetailsPromise) {
+		return mapper.addUserDetailsPromise(userDetailsPromise);
+	}
+
+
 
 }

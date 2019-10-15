@@ -4,6 +4,55 @@
 <mapper  namespace="com.sun.chenglixin.mapper.PromiseMapper">
 	
 	
+	
+	<!--/**
+	 * 添加一个用户承诺书简版数据
+	 * @param userPromise
+	 * @return
+	 */
+	Integer addUserPromise(UserPromise userPromise);  -->
+	<insert id="addUserPromise" useGeneratedKeys="true" keyProperty="pid">
+		INSERT INTO  t_user_promise
+		(
+			udpid,title,
+			type,is_promise,
+			time,created_user,
+	    	created_time,modified_user,
+	    	modified_time
+		)VALUES(
+			#{udpid},#{title},
+			#{type},#{isPromise},
+			#{time},#{createdUser},
+	    	#{createdTime},#{modifiedUser},
+	    	#{modifiedTime}
+		)
+	</insert>
+	
+	
+	<!--/**
+	 * 添加一个用户承诺书数据
+	 * @param userDetailsPromise
+	 * @return
+	 */
+	Integer addUserDetailsPromise(UserDetailsPromise userDetailsPromise);   -->
+	<insert id="addUserDetailsPromise" useGeneratedKeys="true"  keyProperty="udpid">
+		INSERT INTO  t_user+details_Promise
+		( 
+			title,body ,type,
+			username,created_user ,
+	    	created_time ,modified_user,
+	    	modified_time 
+		)VALUES(
+			#{title},#{body} ,#{type},
+			#{userName},#{createdUser },
+	    	#{createdTime},#{modifiedUser},
+	    	#{modifiedTime} 
+		)
+	</insert>
+	
+	
+	
+	
 	<!--/**
 	 * 根据start和end进行分页查询用户承诺书
 	 * @param start
