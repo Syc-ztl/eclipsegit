@@ -10,6 +10,7 @@ import com.sun.chenglixin.mapper.CompanyPromiseMapper;
 import com.sun.chenglixin.service.ICompanyPromiseService;
 import com.sun.chenglixin.service.ex.exception.CompanyPromiseNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
+import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 
 public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 
@@ -42,6 +43,14 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 				throw new InsertException("数据插入异常，请联系管理员");
 			}
 				
+			
+			
+			
+			companyDetailsPromise.setCreatedUser(username);
+			companyDetailsPromise.setCreatedTime(new Date());
+			companyDetailsPromise.setModifiedTime(new Date());
+			companyDetailsPromise.setModifiedUser(username);
+			
 			Integer line=addCompanyDetailsPromise(companyDetailsPromise);
 			if(!line.equals(1)) {
 				throw new InsertException("数据插入异常，请联系管理员");
@@ -58,6 +67,9 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 	 * @return
 	 */
 	private CompanyPromise findCompanyPromise(Integer start,Integer end) {
+		if(start==null || end==null) {
+			throw new IrregularParameterException("不规范参数");
+		}
 		return mapper.findCompanyPromise(start, end);
 	}
 
@@ -67,6 +79,9 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 	 * @return
 	 */
 	private Integer  addCompanyPromise(CompanyPromise companyPromise) {
+		if(companyPromise==null) {
+			throw new IrregularParameterException("参数不规范，请填写正确的参数");
+		}
 		return mapper.addCompanyPromise(companyPromise);
 	}
 	
@@ -76,6 +91,9 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 	 * @return
 	 */
 	private Integer addCompanyDetailsPromise(CompanyDetailsPromise companyDetailsPromise) {
+		if(companyDetailsPromise==null) {
+			throw new IrregularParameterException("不规范参数");
+		}
 		return mapper.addCompanyDetailsPromise(companyDetailsPromise);
 	}
 	

@@ -3,8 +3,13 @@ package com.sun.chenglixin.controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.sun.chenglixin.controller.Exception.ControllerException;
+import com.sun.chenglixin.controller.Exception.FileEmptyException;
+import com.sun.chenglixin.controller.Exception.FileIOException;
+import com.sun.chenglixin.controller.Exception.FileSizeException;
+import com.sun.chenglixin.controller.Exception.FileStateException;
+import com.sun.chenglixin.controller.Exception.FileTypeException;
+import com.sun.chenglixin.controller.Exception.FileUploadException;
 import com.sun.chenglixin.entity.User;
 import com.sun.chenglixin.service.ex.exception.CodeCheckOutException;
 import com.sun.chenglixin.service.ex.exception.CodeNotFoundException;
@@ -47,6 +52,21 @@ public class BaseController {
 			json.setMessage(e.getMessage());
 		}else if(e instanceof UpdateException) {
 			json.setState(70);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof FileEmptyException) {
+			json.setState(80);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof FileIOException) {
+			json.setState(81);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof FileSizeException) {
+			json.setState(82);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof FileStateException) {
+			json.setState(83);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof FileTypeException) {
+			json.setState(84);
 			json.setMessage(e.getMessage());
 		}
 		

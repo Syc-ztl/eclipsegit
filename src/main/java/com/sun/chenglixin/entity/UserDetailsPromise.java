@@ -13,13 +13,15 @@ public class UserDetailsPromise extends BaseEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Integer udpid;
 	private String title;
 	private String body;
 	private String userName;
 	private Date time;
 	private String type;
-	
+	private String idCard;
+	private String phone;
 	
 	
 	
@@ -28,6 +30,27 @@ public class UserDetailsPromise extends BaseEntity {
 		super(createdUser, createdTime, modifiedUser, modifiedTime);
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public String getIdCard() {
+		return idCard;
+	}
+
+
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
+	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 
 	public String getType() {
 		return type;
@@ -104,14 +127,16 @@ public class UserDetailsPromise extends BaseEntity {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
 		return "UserDetailsPromise [udpid=" + udpid + ", title=" + title + ", body=" + body + ", userName=" + userName
-				+ ", time=" + time + ", type=" + type + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()="
-				+ getCreatedTime() + ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()="
-				+ getModifiedTime() + "]";
+				+ ", time=" + time + ", type=" + type + ", idCard=" + idCard + ", phone=" + phone
+				+ ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
+				+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
 	}
 
+	
 	
 
 }

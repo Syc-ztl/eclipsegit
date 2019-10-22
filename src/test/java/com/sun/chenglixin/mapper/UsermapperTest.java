@@ -37,11 +37,11 @@ public class UsermapperTest {
 	}
 	
 	
-	@Test
-	public  void   findByUsername() {
-		User user=mapper.findByUsername("tom");
-		System.err.println(user);
-	}
+//	@Test
+//	public  void   findByUsername() {
+//		User user=mapper.findByUsername("tom");
+//		System.err.println(user);
+//	}
 	
 	
 	

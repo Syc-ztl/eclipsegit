@@ -14,13 +14,13 @@
 		INSERT INTO t_user
 		(
 			username,
-			id_card,phone,
+			id_card,phone,hours,
 			email,avatar,password,
 			salt,authority,credit_score
 			created_user,created_time,
 			modified_user,modified_time
 		)VALUES(
-			#{username},
+			#{username},#{hours},
 			#{idCard},#{phone},
 			#{email},#{avatar},
 			#{password},#{creditScore}
@@ -72,6 +72,21 @@
 	</update>
 	
 	
+	<!--Integer updateAvatar(
+			@Param("uid") Integer uid,
+			@Param("avatar") String avatar,
+			@Param("modifiedUser") String modifiedUser,
+			@Param("modifiedTime") Date modifiedTime);  -->
+	<update id="updateAvatar">
+		UPDATE 
+			t_user
+		SET 
+			avatar=#{avatar},
+			modified_user=#{modifiedUser}, 
+			modified_time=#{modifiedTime} 
+		WHERE 
+			uid=#{uid}
+	</update>
 	
 	
 	
@@ -90,7 +105,7 @@
 		FROM
 			t_user
 		WHERE
-			username=#{username}
+			uid=#{uid}
 	</select>
 	
 	<!--	/**

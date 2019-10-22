@@ -1,6 +1,6 @@
 package com.sun.chenglixin.service.impl;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sun.chenglixin.entity.DetailsHeadline;
@@ -10,6 +10,7 @@ import com.sun.chenglixin.mapper.HeadLineMapper;
 import com.sun.chenglixin.service.IHeadLineService;
 import com.sun.chenglixin.service.ex.exception.HeadLineNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
+import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 
 public class HeadLineServiceImpl implements IHeadLineService{
 
@@ -27,8 +28,39 @@ public class HeadLineServiceImpl implements IHeadLineService{
 	
 	
 	@Override
-	public void saveHeadLine(DetailsHeadline detailsHeadline, String avatar) throws InsertException {
+	public void saveHeadLine(DetailsHeadline detailsHeadline, String avatar,String username) throws InsertException {
 		
+		Integer dhid=detailsHeadline.getDhid();
+		String title=detailsHeadline.getTitle();
+		Date headlineTime=detailsHeadline.getIssueTime();
+		HeadLine  headLine=new HeadLine(username, new Date(), username, new Date());
+		headLine.setDhid(dhid);
+		headLine.setTitle(title);
+		headLine.setHeadlinTime(headlineTime);
+		Integer row=addHeadLine(headLine);
+		if(!row.equals(1)) {
+			throw new InsertException("数据插入异常，请联系管理员");
+		}
+		
+		
+		
+		Photo photo=new Photo(username, new Date(), username, new Date());
+		photo.setAvatar(avatar);
+		photo.setDhid(dhid);
+		Integer row1=addPhoto(photo);
+		if(!row1.equals(1)) {
+			throw new InsertException("数据插入异常，请联系管理员");
+		}
+		
+		
+		detailsHeadline.setCreatedTime(new Date());
+		detailsHeadline.setCreatedUser(username);
+		detailsHeadline.setModifiedTime(new Date());
+		detailsHeadline.setModifiedUser(username);
+		Integer row2=addDetailsHeadLine(detailsHeadline);
+		if(!row2.equals(1)) {
+			throw new InsertException("数据插入异常，请联系管理员");
+		}
 		
 	}
 
@@ -39,6 +71,9 @@ public class HeadLineServiceImpl implements IHeadLineService{
 	 * @return
 	 */
 	private HeadLine	findHeadLineByLimit(Integer start,Integer end){
+		if(start==null || end==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.findHeadLineByLimit(start, end);
 	}
 
@@ -48,6 +83,9 @@ public class HeadLineServiceImpl implements IHeadLineService{
 	 * @return
 	 */
 	private Integer addHeadLine(HeadLine headLine) {
+		if(headLine==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addHeadLine(headLine);
 	}
 	
@@ -58,6 +96,9 @@ public class HeadLineServiceImpl implements IHeadLineService{
 	 * @return
 	 */
 	private Integer  addDetailsHeadLine(DetailsHeadline detailsHeadLine) {
+		if(detailsHeadLine==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addDetailsHeadLine(detailsHeadLine);
 	}
 	
@@ -67,6 +108,9 @@ public class HeadLineServiceImpl implements IHeadLineService{
 	 * @return
 	 */
 	private Integer addPhoto(Photo photo) {
+		if(photo==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addPhoto(photo);
 	}
 	

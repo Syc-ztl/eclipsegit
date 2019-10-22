@@ -16,6 +16,7 @@ public class User extends BaseEntity{
 	private Integer uid;
 	private String username;
 	private String creditScore ;
+	private String hours;
 	private String idCard;
 	private String phone;
 	private String email;
@@ -29,6 +30,14 @@ public class User extends BaseEntity{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public String getHours() {
+		return hours;
+	}
+
+	public void setHours(String hours) {
+		this.hours = hours;
+	}
+
 	public String getCreditScore() {
 		return creditScore;
 	}
@@ -114,14 +123,16 @@ public class User extends BaseEntity{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", username=" + username + ", creditScore=" + creditScore + ", idCard=" + idCard
-				+ ", phone=" + phone + ", email=" + email + ", avatar=" + avatar + ", password=" + password + ", salt="
-				+ salt + ", authority=" + authority + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()="
-				+ getCreatedTime() + ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()="
-				+ getModifiedTime() + "]";
+		return "User [uid=" + uid + ", username=" + username + ", creditScore=" + creditScore + ", hours=" + hours
+				+ ", idCard=" + idCard + ", phone=" + phone + ", email=" + email + ", avatar=" + avatar + ", password="
+				+ password + ", salt=" + salt + ", authority=" + authority + ", getCreatedUser()=" + getCreatedUser()
+				+ ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()=" + getModifiedUser()
+				+ ", getModifiedTime()=" + getModifiedTime() + "]";
 	}
+	
 	
 	
 

@@ -14,6 +14,7 @@ import com.sun.chenglixin.mapper.CompanyMapper;
 import com.sun.chenglixin.service.ICompanyService;
 import com.sun.chenglixin.service.ex.exception.CodeCheckOutException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
+import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.PasswordNotMatchException;
 import com.sun.chenglixin.service.ex.exception.PhoneNotFoundException;
 import com.sun.chenglixin.service.ex.exception.UpdateException;
@@ -57,6 +58,7 @@ public class CompanyServiceImpl implements ICompanyService {
 		company.setPassword(md5password);
 		company.setAuthority(1);
 		company.setCreditScore("0");
+		company.setHours("0");
 		company.setCreatedTime(new Date());
 		company.setCreatedUser(company.getUsername());
 		company.setModifiedTime(new Date());
@@ -169,6 +171,9 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @return 返回受影响的行数
 	 */
 	private Integer addCompany(Company company) {
+		if(company==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addCompany(company);
 	}
 
@@ -179,6 +184,9 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @return
 	 */
 	private Company findByCompany(String companyName) {
+		if(companyName==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.findByCompany(companyName);
 	}
 
@@ -189,6 +197,9 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @return
 	 */
 	private Company findByphone(String phone) {
+		if(phone==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.findByCompany(phone);
 	}
 
@@ -200,6 +211,9 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @return
 	 */
 	private Integer updatePassword(String phone, String password,String modifiedUser,Date modifiedTime) {
+		if(phone==null || password==null || modifiedTime==null || modifiedUser==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.updatePassword(phone, password, modifiedUser, modifiedTime);
 	}
 
@@ -211,6 +225,9 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * @return
 	 */
 	private Integer updatePhone(String oldphone, String newphone,String modifiedUser,Date modifiedTime) {
+		if(oldphone==null || newphone==null || modifiedTime==null || modifiedUser==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.updatePhone(oldphone, newphone, modifiedUser, modifiedTime);
 	}
 

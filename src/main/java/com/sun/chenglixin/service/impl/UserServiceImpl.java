@@ -16,6 +16,7 @@ import com.sun.chenglixin.service.IUserService;
 import com.sun.chenglixin.service.ex.exception.CodeCheckOutException;
 import com.sun.chenglixin.service.ex.exception.CodeNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
+import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.PasswordNotMatchException;
 import com.sun.chenglixin.service.ex.exception.PhoneNotFoundException;
 import com.sun.chenglixin.service.ex.exception.UpdateException;
@@ -61,6 +62,7 @@ public class UserServiceImpl implements IUserService {
 
 		user.setAuthority(1);
 		user.setCreditScore("0");
+		user.setHours("0");
 		// 补全4项日志数据
 		user.setCreatedTime(new Date());
 		user.setCreatedUser(user.getUsername());
@@ -161,6 +163,35 @@ public class UserServiceImpl implements IUserService {
 		}
 
 	}
+	
+	
+	
+	/**
+	 *修改头像
+	 */
+	@Override
+	public void changeAvatar(Integer uid, String avatar, String modifiedUser)
+			throws UserNotFoundException, UpdateException {
+		// 使用uid查询用户数据
+				User user=findByUid(uid);
+				// 判断返回结果是否为null
+				if(user ==null) {
+					// 是：UserNotFoundException
+					throw new UserNotFoundException("上传头像异常！用户数据不存在");
+				}
+
+				// 更新用户头像
+				Integer row=mapper.updateAvatar(uid, avatar, modifiedUser, new Date());
+				// 判断受影响的行数是否不为1
+				if(!row.equals(1)) {
+					// 是：UpdateException
+					throw new UpdateException("上传头像异常！请联系管理员");
+				}
+		
+	}
+	
+	
+	
 
 	/**
 	 * 对密码进行加密
@@ -186,6 +217,9 @@ public class UserServiceImpl implements IUserService {
 	 * @return
 	 */
 	private Integer updatePhone(String oldphone, String newphone,String modifiedUser,Date modifiedTime) {
+		if(oldphone==null || newphone==null || modifiedUser==null || modifiedTime==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.updatePhone(oldphone, newphone, modifiedUser, modifiedTime);
 	}
 
@@ -196,6 +230,9 @@ public class UserServiceImpl implements IUserService {
 	 * @return
 	 */
 	private Integer updatePasswordByPhone(String phone, String password,String modifiedUser,Date modifiedTime) {
+		if(phone==null || password==null || modifiedUser==null || modifiedTime==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.updatePasswordByPhone(phone, password, modifiedUser, modifiedTime);
 	}
 
@@ -206,6 +243,9 @@ public class UserServiceImpl implements IUserService {
 	 * @return 返回添加成功或者失败
 	 */
 	private Integer addUser(User user) {
+		if(user==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addUser(user);
 	}
 
@@ -215,8 +255,11 @@ public class UserServiceImpl implements IUserService {
 	 * @param username
 	 * @return 返回用户信息
 	 */
-	private User findByUsername(String username) {
-		return mapper.findByUsername(username);
+	private User findByUid(Integer uid) {
+		if(uid==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
+		return mapper.findByUid(uid);
 	}
 
 	/**
@@ -226,7 +269,12 @@ public class UserServiceImpl implements IUserService {
 	 * @return
 	 */
 	private User findByPhone(String phone) {
+		if(phone==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.findByPhone(phone);
 	}
+
+	
 
 }

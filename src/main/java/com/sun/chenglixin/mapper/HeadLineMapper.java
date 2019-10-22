@@ -35,6 +35,15 @@ public interface HeadLineMapper {
 	 */
 	Integer addPhoto(Photo photo);
 	
+	
+	/**
+	 * 根据dhid查找对应的信用头条详情
+	 * @param dhid
+	 * @return
+	 */
+	DetailsHeadline  findDetailsHeadline(Integer dhid);
+	
+	
 	/**
 	 * 根据分页查询进行查询信用头条的简版信息
 	 * @param start

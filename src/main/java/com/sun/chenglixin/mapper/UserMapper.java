@@ -16,11 +16,11 @@ public interface UserMapper {
 	Integer  addUser(User user);
 	
 	/**
-	 * 根据昵称名查找用户
+	 * 根据id名查找用户
 	 * @param username
 	 * @return  返回用户信息
 	 */
-	User  findByUsername(String username);
+	User  findByUid(Integer uid);
 	
 	/**
 	 * 根据电话查找
@@ -50,5 +50,19 @@ public interface UserMapper {
 						@Param("newphone")String newphone,
 						@Param("modifiedUser")String modifiedUser,
 						@Param("modifiedTime")Date modifiedTime);
+	
+	/**
+	 * 修改头像
+	 * @param uid
+	 * @param avatar
+	 * @param modifiedUser
+	 * @param modifiedTime
+	 * @return
+	 */
+	Integer updateAvatar(
+			@Param("uid") Integer uid,
+			@Param("avatar") String avatar,
+			@Param("modifiedUser") String modifiedUser,
+			@Param("modifiedTime") Date modifiedTime);
 	
 }

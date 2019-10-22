@@ -18,7 +18,7 @@ public interface IHeadLineService {
 	 * @param avatar
 	 * @throws InsertException
 	 */
-	void   saveHeadLine(DetailsHeadline detailsHeadline,String avatar)throws InsertException;
+	void   saveHeadLine(DetailsHeadline detailsHeadline,String avatar,String username)throws InsertException;
 	
 	/**
 	 * 根据start和end查询信用头条信息

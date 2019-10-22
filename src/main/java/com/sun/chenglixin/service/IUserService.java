@@ -70,4 +70,15 @@ public interface IUserService {
 	 */
 	void   updatePhone(String oldphone,String newphone,String code)throws PhoneNotFoundException,UpdateException,UserNotFoundException;
 	
+	
+	/**
+	 * 修改头像
+	 * @param uid
+	 * @param avatar
+	 * @param modifiedUser
+	 * @throws UserNotFoundException
+	 * @throws UpdateException
+	 */
+	void changeAvatar (Integer uid,String avatar,String modifiedUser)throws UserNotFoundException, UpdateException;
+	
 }

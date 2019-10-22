@@ -14,14 +14,14 @@
 	<insert id="addCompany"  keyProperty="cid"  useGeneratedKeys="true">
 		INSERT INTO t_company
 		(
-			 username ,company_name,
+			 username ,company_name,hours,
 			id_card,phone,email,
 			password,salt,
 			avatar,credit_score
 			created_user,created_time,
 			modified_user,modified_time
 		)VALUES(
-			#{userName},#{companyName},
+			#{userName},#{companyName},#{hours},
 			#{idCard},#{phone},
 			#{email},#{avatar},
 			#{password},#{creditScore},

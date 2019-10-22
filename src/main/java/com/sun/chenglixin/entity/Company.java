@@ -17,6 +17,7 @@ public class Company extends BaseEntity {
 	 private  String userName;
 	 private String companyName;
 	 private String creditScore ;
+	 private String  hours;
 	private String idCard;
 	private String phone;
 	private String email;
@@ -28,6 +29,15 @@ public class Company extends BaseEntity {
 			super(createdUser, createdTime, modifiedUser, modifiedTime);
 			// TODO Auto-generated constructor stub
 		}
+	 
+	public String getHours() {
+		return hours;
+	}
+
+	public void setHours(String hours) {
+		this.hours = hours;
+	}
+
 	public Integer getCid() {
 		return cid;
 	}
@@ -123,14 +133,16 @@ public class Company extends BaseEntity {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Company [cid=" + cid + ", userName=" + userName + ", companyName=" + companyName + ", creditScore="
-				+ creditScore + ", idCard=" + idCard + ", phone=" + phone + ", email=" + email + ", password="
-				+ password + ", authority=" + authority + ", salt=" + salt + ", avatar=" + avatar
+				+ creditScore + ", hours=" + hours + ", idCard=" + idCard + ", phone=" + phone + ", email=" + email
+				+ ", password=" + password + ", authority=" + authority + ", salt=" + salt + ", avatar=" + avatar
 				+ ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
 				+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
 	}
+	
 	
 	
 

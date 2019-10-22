@@ -4,34 +4,34 @@ package com.sun.chenglixin.controller.Exception;
  * @author lenveo
  *
  */
-public class ControllerException  extends  RuntimeException{
+public class FileUploadException  extends  ControllerException{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ControllerException() {
+	public FileUploadException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ControllerException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public FileUploadException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ControllerException(String message, Throwable cause) {
+	public FileUploadException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ControllerException(String message) {
+	public FileUploadException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ControllerException(Throwable cause) {
+	public FileUploadException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}

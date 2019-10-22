@@ -38,13 +38,13 @@
 	<insert id="addCompanyDetailsPromise" useGeneratedKeys="true" keyProperty="cdpid">
 		INSERT INTO t_company_details_promise
 		(
-			title ,type,company_name,
+			title ,type,company_name,phone
 			company_idcard,punish_id,
 			body,time,username ,
 			created_user ,created_time,
 			modified_user,modified_time 
 		)VALUES(
-			#{title},#{type},#{companyName},
+			#{title},#{type},#{companyName},#{phone},
 			#{companyIdCard},#{punishId},
 			#{body},#{time},#{username} ,
 			#{createduser} ,#{createdTime},

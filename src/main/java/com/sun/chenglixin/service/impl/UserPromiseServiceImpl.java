@@ -9,6 +9,7 @@ import com.sun.chenglixin.entity.UserPromise;
 import com.sun.chenglixin.mapper.UserPromiseMapper;
 import com.sun.chenglixin.service.IUserPromiseService;
 import com.sun.chenglixin.service.ex.exception.InsertException;
+import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.UserPromiseNotFoundException;
 
 public class UserPromiseServiceImpl implements IUserPromiseService {
@@ -56,6 +57,9 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 	 * @return
 	 */
 	private UserPromise  findUserPromise(Integer start,Integer end) {
+		if(start==null || end==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.findUserPromise(start, end);
 	}
 
@@ -65,6 +69,9 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 	 * @return
 	 */
 	private Integer addUserPromise(UserPromise userPromise) {
+		if(userPromise==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addUserPromise(userPromise);
 	}
 	
@@ -75,6 +82,9 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 	 * @return
 	 */
 	private Integer addUserDetailsPromise(UserDetailsPromise userDetailsPromise) {
+		if(userDetailsPromise==null) {
+			throw new IrregularParameterException("参数不规范");
+		}
 		return mapper.addUserDetailsPromise(userDetailsPromise);
 	}
 

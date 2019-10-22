@@ -38,12 +38,12 @@
 	<insert id="addUserDetailsPromise" useGeneratedKeys="true"  keyProperty="udpid">
 		INSERT INTO  t_user+details_Promise
 		( 
-			title,body ,type,
+			title,body ,type,phone,id_card,
 			username,created_user ,
 	    	created_time ,modified_user,
 	    	modified_time 
 		)VALUES(
-			#{title},#{body} ,#{type},
+			#{title},#{body} ,#{type},#{phone},#{idCard},
 			#{userName},#{createdUser },
 	    	#{createdTime},#{modifiedUser},
 	    	#{modifiedTime} 

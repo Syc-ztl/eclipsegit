@@ -22,12 +22,20 @@ public class CompanyDetailsPromise extends BaseEntity {
 			private Date time;
 			private String username;
 			private String type;
-			
+			private String phone;
 			public CompanyDetailsPromise(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
 				super(createdUser, createdTime, modifiedUser, modifiedTime);
 				// TODO Auto-generated constructor stub
 			}
 			
+			public String getPhone() {
+				return phone;
+			}
+
+			public void setPhone(String phone) {
+				this.phone = phone;
+			}
+
 			public String getType() {
 				return type;
 			}
@@ -105,14 +113,16 @@ public class CompanyDetailsPromise extends BaseEntity {
 					return false;
 				return true;
 			}
+
 			@Override
 			public String toString() {
 				return "CompanyDetailsPromise [cdpid=" + cdpid + ", title=" + title + ", companyName=" + companyName
 						+ ", companyIdCard=" + companyIdCard + ", punishId=" + punishId + ", body=" + body + ", time="
-						+ time + ", username=" + username + ", type=" + type + ", getCreatedUser()=" + getCreatedUser()
-						+ ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()=" + getModifiedUser()
-						+ ", getModifiedTime()=" + getModifiedTime() + "]";
+						+ time + ", username=" + username + ", type=" + type + ", phone=" + phone
+						+ ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
+						+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
 			}
+			
 		
 			
 
