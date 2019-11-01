@@ -31,6 +31,7 @@ public class UserController extends BaseController {
 	@Autowired
 	IUserService service;
 
+	
 	@RequestMapping("add_user")
 	public JsonResult<Void> saveUser(User user, String code) {
 		JsonResult<Void> json = new JsonResult<Void>();
@@ -69,6 +70,7 @@ public class UserController extends BaseController {
 		return json;
 	}
 
+	
 	private static final long AVATAR_MAX_SIZE = 600 * 1024;
 
 	private static final List<String> AVATAR_TYPES = new ArrayList<String>();
@@ -87,7 +89,7 @@ public class UserController extends BaseController {
 
 		// 空文件验证
 		if (file.isEmpty()) {
-			throw new FileEmptyException("文件上传异常！文件不能为空");
+			throw new FileEmptyException("文件上传异常！文件不能为空"); 
 		}
 		// 文件大小验证
 		long fileSize = file.getSize();

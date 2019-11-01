@@ -60,5 +60,21 @@ public interface CompanyMapper {
 								@Param("modifiedUser")String modifiedUser,
 								@Param("modifiedTime")Date modifiedTime);
 	
+	/**
+	 * 修改头像
+	 * @param cid
+	 * @param avatar
+	 * @param modifiedUser
+	 * @param modifiedTime
+	 * @return
+	 */
+	Integer  updateAvatar(@Param("cid")Integer cid,@Param("avatar")String avatar,@Param("modifiedUser") String modifiedUser,
+			@Param("modifiedTime") Date modifiedTime);
 	
+	/**
+	 * 根据cid进行查找企业信息
+	 * @param cid
+	 * @return
+	 */
+	Company  findByCid(Integer cid);
 }

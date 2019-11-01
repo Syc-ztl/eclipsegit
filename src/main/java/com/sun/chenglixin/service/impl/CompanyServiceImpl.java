@@ -13,6 +13,7 @@ import com.sun.chenglixin.entity.Company;
 import com.sun.chenglixin.mapper.CompanyMapper;
 import com.sun.chenglixin.service.ICompanyService;
 import com.sun.chenglixin.service.ex.exception.CodeCheckOutException;
+import com.sun.chenglixin.service.ex.exception.CompanyNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.PasswordNotMatchException;
@@ -22,6 +23,8 @@ import com.sun.chenglixin.service.ex.exception.UserNotFoundException;
 import com.sun.chenglixin.service.ex.exception.UsernameDuplicateException;
 import com.sun.chenglixin.util.Msg;
 import com.sun.chenglixin.util.Smutil;
+
+import io.lettuce.core.dynamic.annotation.Param;
 
 /**
  * 企业业务层实现类
@@ -147,6 +150,29 @@ public class CompanyServiceImpl implements ICompanyService {
 			throw new UpdateException("数据更新异常，请联系管理员");
 		}
 	}
+	
+	
+	
+	@Override
+	public void changeAvatar(Integer cid, String modifiedUser, String avatar)
+			throws UpdateException, CompanyNotFoundException {
+		Company company=findByCid(cid);
+		if(company==null) {
+			throw new CompanyNotFoundException("企业信息未找到");
+		}
+		
+		Integer row=updateAvatar(cid, avatar, modifiedUser, new Date());
+		if(!row.equals(1)) {
+			throw new UpdateException("数据更新异常请联系管理员");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * 对密码进行加密
@@ -230,5 +256,36 @@ public class CompanyServiceImpl implements ICompanyService {
 		}
 		return mapper.updatePhone(oldphone, newphone, modifiedUser, modifiedTime);
 	}
+
+	/**
+	 * 修改头像
+	 * @param cid
+	 * @param avatar
+	 * @param modifiedUser
+	 * @param modifiedTime
+	 * @return
+	 */
+	private Integer  updateAvatar(Integer cid,String avatar, String modifiedUser,Date modifiedTime){
+		if(cid==null || avatar==null || modifiedUser==null || modifiedTime==null) {
+			throw new IrregularParameterException("不规范参数异常");
+		}
+		return mapper.updateAvatar(cid, avatar, modifiedUser, modifiedTime);
+	}
+	
+	
+	/**
+	 * 根据cid进行查找企业信息
+	 * @param cid
+	 * @return
+	 */
+	private Company  findByCid(Integer cid) {
+		if(cid==null) {
+			throw new IrregularParameterException("不规范参数异常");
+		}
+		return mapper.findByCid(cid);
+	}
+	
+	
+	
 
 }

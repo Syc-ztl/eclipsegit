@@ -75,6 +75,28 @@
 	
 	
 	
+	<!-- /**
+	 * 修改头像
+	 * @param cid
+	 * @param avatar
+	 * @param modifiedUser
+	 * @param modifiedTime
+	 * @return
+	 */
+	Integer  updateAvatar(@Param("cid")Integer cid,@Param("avatar")String avatar,@Param("modifiedUser") String modifiedUser,
+			@Param("modifiedTime") Date modifiedTime); -->
+	<update id="updateAvatar">
+		UPDATE 
+			t_company
+		SET 
+			avatar=#{avatar},
+			modified_user=#{modifiedUser}, 
+			modified_time=#{modifiedTime} 
+		WHERE 
+			cid=#{cid}
+
+	</update>
+	
 	
 	<!-- /**
 	 * 根据企业名查询公司信息
@@ -105,7 +127,7 @@
 	<select id="findByPhone" resultType="com.sun.chenglixin.entity.Company">
 		SELECT 
 			cid, username,
-			company_name,
+			company_name  as  companyName,
 			password, avatar,
 			salt
 		FROM 
@@ -114,6 +136,24 @@
 			phone=#{phone}
 	</select>
 	
+	<!--	/**
+	 * 根据cid进行查找企业信息
+	 * @param cid
+	 * @return
+	 */
+	Company  findByCid(Integer cid);  -->
+	<select id="findByCid" resultType="com.sun.chenglixin.entity.Company">
+		SELECT 
+			cid, username,
+			company_name  as  companyName,
+			password, avatar,
+			salt
+		FROM 
+			t_company
+		WHERE 
+			cid=#{cid}
+	
+	</select>
 	
 	
 </mapper>

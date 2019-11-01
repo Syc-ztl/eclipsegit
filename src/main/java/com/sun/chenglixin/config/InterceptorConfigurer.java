@@ -29,6 +29,7 @@ public class InterceptorConfigurer implements WebMvcConfigurer{
 		patterns.add("/images/**");
 		patterns.add("/js/**");
 		// 注册和登录页面
+		patterns.add("/index.html");
 		patterns.add("/login.html");
 		patterns.add("/register.html");
 		patterns.add("/business_registe.html");

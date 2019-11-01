@@ -2,6 +2,7 @@ package com.sun.chenglixin.service;
 
 import com.sun.chenglixin.entity.Company;
 import com.sun.chenglixin.service.ex.exception.CodeCheckOutException;
+import com.sun.chenglixin.service.ex.exception.CompanyNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.PasswordNotMatchException;
 import com.sun.chenglixin.service.ex.exception.PhoneNotFoundException;
@@ -73,8 +74,15 @@ public interface ICompanyService {
 		
 		
 		
-		
-		
+		/**
+		 * 公司修改头像
+		 * @param cid
+		 * @param modifedUser
+		 * @param avatar
+		 * @throws UpdateException
+		 * @throws CompanyNotFoundException
+		 */
+		void   changeAvatar(Integer cid,String modifedUser,String avatar)throws UpdateException,CompanyNotFoundException;
 		
 		
 		
