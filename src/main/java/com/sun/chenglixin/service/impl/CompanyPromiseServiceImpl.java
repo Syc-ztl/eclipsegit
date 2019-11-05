@@ -1,6 +1,7 @@
 package com.sun.chenglixin.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,12 +19,12 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 	CompanyPromiseMapper mapper;
 	
 	@Override
-	public CompanyPromise seekCompanyPromise(Integer start, Integer end) throws CompanyPromiseNotFoundException {
-		CompanyPromise companyPromise=findCompanyPromise(start, end);
-		if(companyPromise==null) {
+	public List<CompanyPromise> seekCompanyPromise(Integer start, Integer end) throws CompanyPromiseNotFoundException {
+		List<CompanyPromise> list=findCompanyPromise(start, end);
+		if(list==null) {
 			throw new CompanyPromiseNotFoundException("已经到底了！");
 		}
-		return companyPromise;
+		return list;
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 	 * @param end
 	 * @return
 	 */
-	private CompanyPromise findCompanyPromise(Integer start,Integer end) {
+	private List<CompanyPromise> findCompanyPromise(Integer start,Integer end) {
 		if(start==null || end==null) {
 			throw new IrregularParameterException("不规范参数");
 		}

@@ -13,6 +13,7 @@ import com.sun.chenglixin.controller.Exception.FileUploadException;
 import com.sun.chenglixin.entity.User;
 import com.sun.chenglixin.service.ex.exception.CodeCheckOutException;
 import com.sun.chenglixin.service.ex.exception.CodeNotFoundException;
+import com.sun.chenglixin.service.ex.exception.CompanyPromiseNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.PasswordNotMatchException;
 import com.sun.chenglixin.service.ex.exception.PhoneNotFoundException;
@@ -67,6 +68,9 @@ public class BaseController {
 			json.setMessage(e.getMessage());
 		}else if(e instanceof FileTypeException) {
 			json.setState(84);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof CompanyPromiseNotFoundException) {
+			json.setState(90);
 			json.setMessage(e.getMessage());
 		}
 		

@@ -1,5 +1,7 @@
 package com.sun.chenglixin.service;
 
+import java.util.List;
+
 import com.sun.chenglixin.entity.CompanyDetailsPromise;
 import com.sun.chenglixin.entity.CompanyPromise;
 import com.sun.chenglixin.service.ex.exception.CompanyPromiseNotFoundException;
@@ -27,5 +29,5 @@ public interface ICompanyPromiseService {
 	 * @param end
 	 * @return
 	 */
-	CompanyPromise seekCompanyPromise(Integer start,Integer end)throws CompanyPromiseNotFoundException;
+	List<CompanyPromise> seekCompanyPromise(Integer start,Integer end)throws CompanyPromiseNotFoundException;
 }

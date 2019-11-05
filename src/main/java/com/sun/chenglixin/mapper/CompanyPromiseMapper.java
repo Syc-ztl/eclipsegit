@@ -1,5 +1,7 @@
 package com.sun.chenglixin.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.sun.chenglixin.entity.CompanyDetailsPromise;
@@ -32,7 +34,7 @@ public interface CompanyPromiseMapper {
 	 * @param end
 	 * @return
 	 */
-	CompanyPromise findCompanyPromise(@Param("start")Integer start,@Param("end")Integer end);
+	List<CompanyPromise> findCompanyPromise(@Param("start")Integer start,@Param("end")Integer end);
 	
 	
 	
