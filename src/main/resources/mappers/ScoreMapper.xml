@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.ScoreMapper">
+	
+	
+	<!--/**
+	 * 添加分数
+	 * @param score
+	 * @return
+	 */
+	Integer addScore(Score score);  -->
+	<insert id="addScore"  useGeneratedKeys="true" keyProperty="sid">
+		INSERT  INTO
+			t_socre
+		(
+			uid,cid,time 
+			,information_score,
+			exam_score,created_user,
+			created_time,modified_user,modified_time
+		)VALUES(
+			#{uid},#{cid},#{time} 
+			,#{information_score},
+			#{exam_score},#{createdUser},
+			#{createdTime},#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	
+	
+</mapper>

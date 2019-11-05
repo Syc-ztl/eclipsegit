@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.InformationMapper">
+	
+	<!--/**
+	 * 添加题库类型
+	 * @param type
+	 * @return
+	 */
+	Integer addType(Type type);  -->
+	<insert id="addType" useGeneratedKeys="true" keyProperty="tId">
+		INSERT INTO 	
+				t_type
+		(
+			iid,title ,created_user,
+			created_time,modified_user,
+			modified_time
+		)VALUES(
+			#{iId},#{title},
+			#{createdUser},#{createdTime },
+			#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	
+	
+	<!--	/**
+	 * 添加题库题
+	 * @param information
+	 * @return
+	 */
+	Integer  addInformation(Information information);  -->
+	<insert id="addInformation"  useGeneratedKeys="true"  keyProperty="iId">
+		INSERT INTO 
+			t_information
+		(
+			tid,aid,type,body,
+			created_user,created_time,
+			modified_user,modified_time
+		
+		)VALUES(
+			#{tid},#{aid},#{type},#{body},
+			#{createdUser},#{createdTime },
+			#{modifiedUser},#{modifiedTime}
+		
+		)
+	</insert>
+	
+	
+	<!--/**
+	 * 添加答案
+	 * @param informationAnswer 
+	 * @return
+	 */
+	Integer  addAnswer(InformationAnswer informationAnswer);  -->
+	<insert id="addAnswer" useGeneratedKeys="true" keyProperty="aId">
+		INSERT INTO
+			t_information_answer
+		(
+			iid ,answer,
+			r_answer,created_user,
+			created_time ,modified_user,
+			modified_time
+		)VALUES(
+			#{iid},#{answer},#{rAnswer},
+			#{createdUser},#{createdTime },
+			#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	
+	
+	
+	
+	<!--/**
+	 * 查询所有题库类型
+	 * @return
+	 */
+	Type  findAll();  -->
+	<select id="findAll"  resultType="com.sun.chenglixin.entity.Type">
+		SELECT 
+			tid,iid,title
+		FROM
+			t_type
+		ORDER BY
+			ASC
+	</select>
+	 
+	 
+	 
+	 
+	<!--	/**
+	 * 根据tid查询相同题库类型的题
+	 * @param tId
+	 * @return
+	 */
+	List<Information>   findInformationBytId(Integer tId);  -->
+	<select id="findInformationBytId" resultType="com.sun.chenglixin.entity.Information">
+		SELECT
+			i.type,i.body,a.answer
+		FROM
+			t_information  AS  i
+		JOIN
+			t_information_answer  AS a
+		ON
+			i.aId=a.aId
+		ORDER BY
+			ASC
+	</select>
+	
+	
+	
+	<!--/**
+	 * 根据tid查询总题数
+	 * @param tId
+	 * @return
+	 */
+	  Integer findSumBytId(Integer tId);
+	  -->
+	<select id="findSumBytId" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(*)
+		FROM
+			t_information
+		WHERE
+			tid=#{tId}
+	</select>
+	
+	
+	
+	<!--/**
+	 * 根据iId查询题库答案
+	 * @param iId
+	 * @return
+	 */
+	InformationAnswer   findAnswerByiId(Integer iId);  -->
+	  <select id="findAnswerByiId"   resultType="com.sun.chenglixin.entity.InformationAnswer">
+		  SELECT
+				a.r_answer AS rAnswer
+			FROM
+				t_information  AS  i
+			JOIN
+				t_information_answer  AS a
+			ON
+				i.aId=a.aId
+	  		WHERE
+	  			i.iid=#{iId}
+	  </select>
+	  
+	  
+	  
+	
+</mapper>

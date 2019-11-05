@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper  namespace="com.sun.chenglixin.mapper.SimulationExamMapper">
+	
+	<!--/**
+	 * 添加模拟考试试题
+	 * @param simulationExa
+	 * @return
+	 */
+	Integer  addSimulationExam(SimulationExam simulationExa);  -->
+	<insert id="addSimulationExam" useGeneratedKeys="true"  keyProperty="sId" >
+		INSERT INTO
+			t_simulation_exam
+		(
+			body,type,
+			answer,r_answer,
+			created_user,created_time ,
+			modified_user,modified_time
+		)VALUES(
+			#{body},#{type},
+			#{answer},#{rAnswer},
+			#{createdUser},#{createdTime },
+			#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	
+	
+	<!--/**
+	 * 根据start和end进行截取
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	List<SimulationExam> findSimulationExam(@Param("start")Integer start,@Param("end")Integer end);  -->
+	<select id="findSimulationExam"  resultType="com.sun.chenglixin.entity.SimulationExam">
+		SELECT 
+			body,type,answer
+		FROM
+			t_simulationexam
+		LIMIT
+			#{start},#{end}
+	</select>
+	
+	<!--/**
+	 * 查询总题数量
+	 * @param tId
+	 * @return
+	 */
+	Integer  findCount();  -->
+	<select id="findCount" resultType="java.lang.Integer">
+		SELECT 
+			COUNT(*)
+		FROM
+			t_simulationexam
+	</select>
+	
+	
+	<!--/**
+	 * 根据sid查询考试答案
+	 * @param sId
+	 * @return
+	 */
+	SimulationExam   findAnswerBysId(Integer sId);  -->
+	<select id="findAnswerBysId" resultType="com.sun.chenglixin.entity.SimulationExam">
+		SELECT 
+			grade,r_answer
+		FROM
+			t_simulationexam
+		WHERE
+			sid=#{sId}
+	
+	</select>
+	
+</mapper>
+
