@@ -8,8 +8,7 @@ import java.util.Date;
  */
 public class DetailsCourse extends BaseEntity {
 	private int doid;
-	private String companyUsername;
-	private String username;
+	private String name;
 	private String avatar;
 	private String title;
 	private String promiseAvatar;
@@ -19,17 +18,13 @@ public class DetailsCourse extends BaseEntity {
 	public void setDoid(int doid) {
 		this.doid = doid;
 	}
-	public String getCompanyUsername() {
-		return companyUsername;
+	
+
+	public String getName() {
+		return name;
 	}
-	public void setCompanyUsername(String companyUsername) {
-		this.companyUsername = companyUsername;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getAvatar() {
 		return avatar;
@@ -49,12 +44,11 @@ public class DetailsCourse extends BaseEntity {
 	public void setPromiseAvatar(String promiseAvatar) {
 		this.promiseAvatar = promiseAvatar;
 	}
-	public DetailsCourse(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime, int doid,
-			String companyUsername, String username, String avatar, String title, String promiseAvatar) {
+	public DetailsCourse(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime,
+			int doid, String name, String avatar, String title, String promiseAvatar) {
 		super(createdUser, createdTime, modifiedUser, modifiedTime);
 		this.doid = doid;
-		this.companyUsername = companyUsername;
-		this.username = username;
+		this.name = name;
 		this.avatar = avatar;
 		this.title = title;
 		this.promiseAvatar = promiseAvatar;
@@ -81,11 +75,12 @@ public class DetailsCourse extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "DetailsCourse [doid=" + doid + ", companyUsername=" + companyUsername + ", username=" + username
-				+ ", avatar=" + avatar + ", title=" + title + ", promiseAvatar=" + promiseAvatar + ", getCreatedUser()="
-				+ getCreatedUser() + ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()="
-				+ getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
+		return "DetailsCourse [doid=" + doid + ", name=" + name + ", avatar=" + avatar + ", title=" + title
+				+ ", promiseAvatar=" + promiseAvatar + ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()="
+				+ getCreatedTime() + ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()="
+				+ getModifiedTime() + "]";
 	}
+	
 	
 	
 	

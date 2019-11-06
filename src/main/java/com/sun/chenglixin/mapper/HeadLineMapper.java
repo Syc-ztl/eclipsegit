@@ -1,5 +1,7 @@
 package com.sun.chenglixin.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.sun.chenglixin.entity.DetailsHeadline;
@@ -35,6 +37,12 @@ public interface HeadLineMapper {
 	 */
 	Integer addPhoto(Photo photo);
 	
+	/**
+	 * 根据标题查询信用头条详情
+	 * @param title
+	 * @return
+	 */
+	DetailsHeadline  findBytitle(String title);
 	
 	/**
 	 * 根据dhid查找对应的信用头条详情
@@ -45,10 +53,18 @@ public interface HeadLineMapper {
 	
 	
 	/**
+	 * 根据dhid查询当前行用头条的所有照片路径
+	 * @param dhid
+	 * @return
+	 */
+	List<Photo>  findAvatar(Integer dhid);	
+	
+	
+	/**
 	 * 根据分页查询进行查询信用头条的简版信息
 	 * @param start
 	 * @param end
 	 * @return
 	 */
-	HeadLine	findHeadLineByLimit(@Param("start")Integer start,@Param("end")Integer end);
+	List<HeadLine>	findHeadLineByLimit(@Param("start")Integer start,@Param("end")Integer end);
 }

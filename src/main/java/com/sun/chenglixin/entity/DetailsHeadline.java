@@ -5,6 +5,10 @@ import java.util.Date;
 public class DetailsHeadline extends BaseEntity {
 		
 
+			/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 			private Integer dhid;
 			private Integer pid;
 			private String title;

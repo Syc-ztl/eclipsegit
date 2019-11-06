@@ -62,10 +62,26 @@
 				dhid,avatar,created_user,created_time ,
     			modified_user,modified_time
 			)VALUES(
-				#{dhid},#{avatar},#{createdUser},#{createdTime} ,
+				#{dhid},#{createdUser},#{createdTime} ,
     			#{modifiedUser},#{modifiedTime}
 			)
 	</insert>
+	
+	
+	<!--/**
+	 * 根据标题查询信用头条详情
+	 * @param title
+	 * @return
+	 */
+	DetailsHeadline  findBytitle(String title);  -->
+	<select id="findBytitle"  resultType="com.sun.chenglixin.entity.DetailsHeadLine">
+		SELECT 
+			dhid
+		FROM
+			t_detailsheadline
+		WHERE
+			title=#{title}
+	</select>
 	
 	
 	
@@ -77,7 +93,7 @@
 	 * @return
 	 */
 	HeadLine	findByLimit(@Param("start")Integer start,@Param("end")Integer end);  -->
-	<select id="findHeadLineByLimit" resultType="com.sun.chenglixin.mapper.HeadLineMapper">
+	<select id="findHeadLineByLimit" resultType="com.sun.chenglixin.entity.HeadLine">
 		SELECT 
 			dhid,title ,
 			headline_time as headlineTime,
@@ -87,6 +103,50 @@
 		LIMIT
 			#{start},#{end}
 	</select>
+	
+	<!-- /**
+	 * 根据dhid查找对应的信用头条详情
+	 * @param dhid
+	 * @return
+	 */
+	DetailsHeadline  findDetailsHeadline(Integer dhid); -->
+	<select id="findDetailsHeadline" resultType="com.sun.chenglixin.entity.DetailsHeadLine">
+		SELECT
+			d.title,d.source,d.issue_time AS issueTime,
+			d.body
+			
+		FROM
+			 t_headline  AS h
+		JOIN
+			t_details_headline AS d
+		ON
+			h.dhid=d.dhid
+		WHERE
+			d.dhid=#{dhid}
+	</select>
+	
+	
+	<!--/**
+	 * 根据dhid查询当前行用头条的所有照片路径
+	 * @param dhid
+	 * @return
+	 */
+	List<Photo>  findAvatar(Integer dhid);	  -->
+	<select id="findAvatar"  resultType="com.sun.chenglixin.entity.Photo">
+		SELECT
+			p.avatar
+		FROM
+			 t_photo  AS p
+		JOIN
+			t_details_headline AS d
+		ON
+			d.dhid=p.dhid
+		WHERE
+			p.dhid=#{dhid}
+	
+	</select>
+	
+	
 	
 	
 	

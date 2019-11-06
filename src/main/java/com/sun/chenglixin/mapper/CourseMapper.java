@@ -1,5 +1,7 @@
 package com.sun.chenglixin.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.sun.chenglixin.entity.Course;
@@ -27,6 +29,14 @@ public interface CourseMapper {
 	 * @param end
 	 * @return
 	 */
-	Course  findAll(@Param("start")Integer start,@Param("end")Integer end);
+	List<Course>  findAll(@Param("start")Integer start,@Param("end")Integer end);
+	
+	/**
+	 * 根据doid进行查询课程详情
+	 * @param doid
+	 * @return
+	 */
+	DetailsCourse    findDetailsCourseByoid(Integer doid);
+	
 	
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sun.chenglixin.entity.Information;
 import com.sun.chenglixin.entity.InformationAnswer;
@@ -19,7 +20,12 @@ import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.TitleNotFoundException;
 import com.sun.chenglixin.service.ex.exception.TypeNotFoundException;
 import com.sun.chenglixin.service.ex.exception.WrongAnswerException;
-
+/**
+ * 题库业务层实现类
+ * @author lenveo
+ *
+ */
+@Service
 public class InformationServiceImpl implements IInformationService{
 
 	@Autowired

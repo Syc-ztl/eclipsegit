@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sun.chenglixin.entity.CompanyDetailsPromise;
 import com.sun.chenglixin.entity.CompanyPromise;
@@ -13,6 +14,13 @@ import com.sun.chenglixin.service.ex.exception.CompanyPromiseNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 
+/**
+ * 企业承诺书业务层
+ * @author lenveo
+ *
+ */
+
+@Service
 public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 
 	@Autowired
@@ -21,7 +29,7 @@ public class CompanyPromiseServiceImpl implements ICompanyPromiseService {
 	@Override
 	public List<CompanyPromise> seekCompanyPromise(Integer start, Integer end) throws CompanyPromiseNotFoundException {
 		List<CompanyPromise> list=findCompanyPromise(start, end);
-		if(list==null) {
+		if(list.isEmpty()) {
 			throw new CompanyPromiseNotFoundException("已经到底了！");
 		}
 		return list;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sun.chenglixin.entity.Exam;
 import com.sun.chenglixin.entity.Score;
@@ -15,7 +16,12 @@ import com.sun.chenglixin.service.ex.exception.ExamNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.WrongAnswerException;
-
+/**
+ * 考试业务层实现类
+ * @author lenveo
+ *
+ */
+@Service
 public class ExamServiceImpl implements IExamService {
 	
 	@Autowired
@@ -55,7 +61,7 @@ public class ExamServiceImpl implements IExamService {
 		}
 		Integer grade=exam.getGrade();
 		String rAnswer=exam.getrAnswer();
-		if(!rAnswer.contentEquals(answer)) {
+		if(!rAnswer.equals(answer)) {
 			throw new WrongAnswerException("答案错误");
 		}
 		grade+=grade;

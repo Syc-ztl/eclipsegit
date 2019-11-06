@@ -48,14 +48,14 @@
 	<insert id="addDetailsCourse" useGeneratedKeys="true" keyProperty="doid">
 		INSERT INTO t_details_course
 		(
-			company_username,username ,
+			name ,
 			avatar,title ,
 			promise_avatar,created_user,
 			created_time ,modified_user,
 			modified_time
 		
 		)VALUES(
-			#{companyUsername},#{username} ,
+			#{name} ,
 			#{avatar},#{title} ,
 			#{promiseAvatar},#{createdUser},
 			#{createdTime} ,#{modifiedUser},
@@ -84,7 +84,26 @@
 	</select>
 	
 	
-	
+	<!--/**
+	 * 根据doid进行查询课程详情
+	 * @param doid
+	 * @return
+	 */
+	DetailsCourse    findDetailsCourseByoid(Integer doid);  -->
+	<select id="findDetailsCourseByoid"  resultType="com.sun.chenglixin.entity.DetailsCourse">
+		SELECT 
+			d.name,
+			d.avatar,
+			d.title
+		FROM 	
+			t_detailscourse  AS  d
+		JOIN
+			t_course  AS  C
+		ON
+			d.doid=c.doid
+		WHERE  
+			c.doid=#{doid}
+	</select>
 	
 	
 </mapper>

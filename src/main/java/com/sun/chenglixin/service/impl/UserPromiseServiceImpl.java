@@ -3,6 +3,7 @@ package com.sun.chenglixin.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sun.chenglixin.entity.UserDetailsPromise;
 import com.sun.chenglixin.entity.UserPromise;
@@ -11,7 +12,12 @@ import com.sun.chenglixin.service.IUserPromiseService;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.UserPromiseNotFoundException;
-
+/**
+ * 用户承诺书实现类
+ * @author lenveo
+ *
+ */
+@Service
 public class UserPromiseServiceImpl implements IUserPromiseService {
 	
 	@Autowired

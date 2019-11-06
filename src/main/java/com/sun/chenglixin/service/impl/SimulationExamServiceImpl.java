@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sun.chenglixin.entity.Exam;
 import com.sun.chenglixin.entity.Score;
@@ -17,7 +18,12 @@ import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.SimulationExamNotFoundException;
 import com.sun.chenglixin.service.ex.exception.WrongAnswerException;
-
+/**
+ * 模拟考试实现类
+ * @author lenveo
+ *
+ */
+@Service
 public class SimulationExamServiceImpl implements ISimulationExamService {
 
 	@Autowired

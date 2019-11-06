@@ -10,7 +10,7 @@ import com.sun.chenglixin.service.ex.exception.UserPromiseNotFoundException;
  * @author lenveo
  *
  */
-public interface IUserPromiseService {
+public interface IUserPromiseService {  
 	
 	/**
 	 * 根据start和end查询用户承诺书

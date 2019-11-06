@@ -1,5 +1,7 @@
 package com.sun.chenglixin.service;
 
+import java.util.List;
+
 import com.sun.chenglixin.entity.DetailsHeadline;
 import com.sun.chenglixin.entity.HeadLine;
 import com.sun.chenglixin.service.ex.exception.HeadLineNotFoundException;
@@ -26,5 +28,12 @@ public interface IHeadLineService {
 	 * @param end
 	 * @return
 	 */
-	HeadLine seekHeadLine(Integer start,Integer end)throws HeadLineNotFoundException;
+	List<HeadLine> seekHeadLine(Integer start,Integer end)throws HeadLineNotFoundException;
+	
+	/**
+	 * 根据标题查询信用头条，在添加图片
+	 * @param title
+	 * @param avatar
+	 */
+	void   savePhotoAvatar(String title,String avatar,String username);
 }
