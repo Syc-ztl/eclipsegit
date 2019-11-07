@@ -28,6 +28,10 @@ public class InterceptorConfigurer implements WebMvcConfigurer{
 		patterns.add("/css/**");
 		patterns.add("/images/**");
 		patterns.add("/js/**");
+		//后台系统页面
+		patterns.add("/AppSystem/**");
+		//后台系统页面
+		patterns.add("/Information/saveInformation");
 		// 注册和登录页面
 		patterns.add("/index.html");
 		patterns.add("/login.html");
@@ -38,13 +42,13 @@ public class InterceptorConfigurer implements WebMvcConfigurer{
 		patterns.add("/user/login");
 		patterns.add("/user/add_user");
 		patterns.add("/user/send");
-		
+
 		patterns.add("/company/login");
 		patterns.add("/company/add_company");
 		patterns.add("/company/send_company");
-		
+
 		// 白名单
 		ir.excludePathPatterns(patterns);
-	
+
 	}
 }

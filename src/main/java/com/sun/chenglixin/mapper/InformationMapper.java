@@ -36,7 +36,8 @@ public interface InformationMapper {
 	 * @return
 	 */
 	Integer  addAnswer(InformationAnswer informationAnswer);
-		
+
+
 	/**
 	 * 查询所有题库类型
 	 * @return
@@ -73,5 +74,16 @@ public interface InformationMapper {
 	 * @return
 	 */
 	InformationAnswer   findAnswerByiId(Integer iId);
-	
+
+	/**
+	 * 根据title查tid
+	 * @return java.lang.Integer
+	 */
+	Integer findTidByTitle(String title);
+
+	/**
+	 * 根据body查iid
+	 * @return java.lang.Integer
+	 */
+	Integer findIidByBody(String body);
 }

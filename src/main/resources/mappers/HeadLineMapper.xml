@@ -74,7 +74,7 @@
 	 * @return
 	 */
 	DetailsHeadline  findBytitle(String title);  -->
-	<select id="findBytitle"  resultType="com.sun.chenglixin.entity.DetailsHeadLine">
+	<select id="findBytitle"  resultType="com.sun.chenglixin.entity.DetailsHeadline">
 		SELECT 
 			dhid
 		FROM
@@ -110,7 +110,7 @@
 	 * @return
 	 */
 	DetailsHeadline  findDetailsHeadline(Integer dhid); -->
-	<select id="findDetailsHeadline" resultType="com.sun.chenglixin.entity.DetailsHeadLine">
+	<select id="findDetailsHeadline" resultType="com.sun.chenglixin.entity.DetailsHeadline">
 		SELECT
 			d.title,d.source,d.issue_time AS issueTime,
 			d.body

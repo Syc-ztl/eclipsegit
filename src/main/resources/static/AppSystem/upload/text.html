@@ -290,11 +290,10 @@
         var title = $("#title").val();
         var body = $("#body").val();
         var answer = $("#answer").val();
-        var rAnswerArray =[];//定义一个数组
-        $('input[name="rAnswer"]:checked').each(function(){//遍历每一个名字为rAnswerArray的复选框，其中选中的执行函数
-            rAnswerArray.push($(this).val());//将选中的值添加到数组rAnswerArray中
+        var rAnswer =[];//定义一个数组
+        $('input[name="rAnswer"]:checked').each(function(){//遍历每一个名字为rAnswer的复选框，其中选中的执行函数
+            rAnswer.push($(this).val());//将选中的值添加到数组rAnswer中
         });
-        var rAnswer = rAnswerArray.join('');
         /* 判空 */
         if(!title) {
             alert('请选择 题库类型标题');
@@ -302,7 +301,7 @@
             alert('题目不能为空');
         } else if(!answer) {
             alert('答案不能为空');
-        }  else if(rAnswerArray.length <= 0) {
+        }  else if(rAnswer.length <= 0) {
             alert('请勾选正确答案');
         }
         else{

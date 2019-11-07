@@ -1,9 +1,6 @@
 package com.sun.chenglixin.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,31 +30,51 @@ public class InformationServiceImpl implements IInformationService{
 	
 	
 	@Override
-	public void saveInformation(Information information,String title,String username,String answer,String rAnswer) {
-		
-		Integer aId=information.getaId();
-		Type type=new Type(username, new Date(), username, new Date());
-		type.setTitle(title);
-		Integer row=addType(type);
-		if(!row.equals(1)) {
-			throw new InsertException("数据插入异常");
+	public void saveInformation(Information information,String title,String username,String answer,String[] rAnswer) {
+
+		//根据title去库里查tid
+		Integer findTid = mapper.findTidByTitle(title);
+		if(null == findTid ){//为空就新建
+			//1.保存题库类型表(t_type)
+			Type type = new Type(username, new Date(), username, new Date());
+			type.setTitle(title);
+			Integer row = addType(type);
+			if(!row.equals(1)) {
+				throw new InsertException("数据插入异常");
+			}
+			//根据title去库里查tid
+			findTid = mapper.findTidByTitle(title);
 		}
-		
+
+		//2.保存题库试题表(t_information)
+		information.settId(findTid);
+		//判断是单选还是多选
+		if(rAnswer.length == 1){
+			information.setType("single");
+		}else if(rAnswer.length > 1){
+			information.setType("multiple");
+		}else{
+			throw new InsertException("请勾选正确答案为空，请勾选");
+		}
 		information.setCreatedTime(new Date());
 		information.setCreatedUser(username);
 		information.setModifiedTime(new Date());
 		information.setModifiedUser(username);
-		Integer row1=addInformation(information);
+		Integer row1 = addInformation(information);
 		if(!row1.equals(1)) {
 			throw new InsertException("数据插入异常");
 		}
-		
-		Integer iId=information.getiId();
-		InformationAnswer iAnswer=new InformationAnswer(username, new Date(), username, new Date());
-		iAnswer.setiId(iId);
+
+		//3.保存题库答案表(t_information_answer)
+		//根据题目body查询t_information表的iId
+		Integer findIid = mapper.findIidByBody(information.getBody());
+		InformationAnswer iAnswer = new InformationAnswer(username, new Date(), username, new Date());
+		iAnswer.setiId(findIid);
 		iAnswer.setAnswer(answer);
-		iAnswer.setrAnswer(rAnswer);
-		Integer row2=addAnswer(iAnswer);
+		//数组转String
+		String rA = Arrays.toString(rAnswer);
+		iAnswer.setrAnswer(rA);
+		Integer row2 = addAnswer(iAnswer);
 		if(!row2.equals(1)) {
 			throw new InsertException("数据插入异常");
 		}

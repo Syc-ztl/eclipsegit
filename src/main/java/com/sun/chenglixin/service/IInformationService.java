@@ -27,7 +27,7 @@ public interface IInformationService {
 	 * @exception InsertException
 	 */
 	void   saveInformation(Information information,String title,
-							String username,String answer,String rAanswer)throws InsertException;
+							String username,String answer,String[] rAanswer)throws InsertException;
 	
 	
 	

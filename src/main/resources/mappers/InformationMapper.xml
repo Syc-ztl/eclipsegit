@@ -13,11 +13,11 @@
 		INSERT INTO 	
 				t_type
 		(
-			iid,title ,created_user,
+			title ,created_user,
 			created_time,modified_user,
 			modified_time
 		)VALUES(
-			#{iId},#{title},
+			#{title},
 			#{createdUser},#{createdTime },
 			#{modifiedUser},#{modifiedTime}
 		)
@@ -34,12 +34,12 @@
 		INSERT INTO 
 			t_information
 		(
-			tid,aid,type,body,
+			tid,type,body,
 			created_user,created_time,
 			modified_user,modified_time
 		
 		)VALUES(
-			#{tid},#{aid},#{type},#{body},
+			#{tId},#{type},#{body},
 			#{createdUser},#{createdTime },
 			#{modifiedUser},#{modifiedTime}
 		
@@ -67,18 +67,16 @@
 			#{modifiedUser},#{modifiedTime}
 		)
 	</insert>
-	
-	
-	
-	
+
+
 	<!--/**
 	 * 查询所有题库类型
 	 * @return
 	 */
 	Type  findAll();  -->
 	<select id="findAll"  resultType="com.sun.chenglixin.entity.Type">
-		SELECT 
-			tid,iid,title
+		SELECT
+			tid,title
 		FROM
 			t_type
 		ORDER BY
@@ -102,7 +100,7 @@
 		JOIN
 			t_information_answer  AS a
 		ON
-			i.aId=a.aId
+			i.iId=a.iId
 		ORDER BY
 			ASC
 	</select>
@@ -141,12 +139,29 @@
 			JOIN
 				t_information_answer  AS a
 			ON
-				i.aId=a.aId
+				i.iId=a.iId
 	  		WHERE
 	  			i.iid=#{iId}
 	  </select>
-	  
-	  
-	  
+
+	<!--根据title查tid-->
+	<select id="findTidByTitle"  resultType="java.lang.Integer">
+		SELECT
+		  	tid
+		FROM
+			t_type
+		WHERE
+			title=#{title}
+	</select>
+
+	<!--根据body查iid-->
+	<select id="findIidByBody"  resultType="java.lang.Integer">
+		SELECT
+		  	iid
+		FROM
+			t_information
+		WHERE
+			body=#{body}
+	</select>
 	
 </mapper>

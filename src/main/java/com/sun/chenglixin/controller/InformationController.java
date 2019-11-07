@@ -30,7 +30,7 @@ public class InformationController extends Exception {
      * @return com.sun.chenglixin.util.JsonResult<java.lang.Void>
      */
     @RequestMapping(value = "saveInformation")
-    public JsonResult<Void> saveInformation(Information information, String title, HttpSession session, String answer, String rAnswer){
+    public JsonResult<Void> saveInformation(Information information, String title, HttpSession session, String answer, String[] rAnswer){
         String username = (String) session.getAttribute("username");
         iInformationService.saveInformation(information, title, username, answer, rAnswer);
         JsonResult<Void> json=new JsonResult<Void>();
