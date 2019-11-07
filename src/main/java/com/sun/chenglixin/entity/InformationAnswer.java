@@ -2,15 +2,17 @@ package com.sun.chenglixin.entity;
 
 import java.util.Date;
 /**
- * 题库答案实体类
+ * 题库答案表 实体类
  * @author lenveo
  *
  */
 public class InformationAnswer extends BaseEntity {
-	private Integer aId;
-	private Integer iId ; 
-	private String answer;
-	private String rAnswer;
+
+	private Integer aId;//答案id
+	private Integer iId ; //试题id
+	private String answer;//答案
+	private String rAnswer;//正确答案
+
 	public InformationAnswer(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
 		super(createdUser, createdTime, modifiedUser, modifiedTime);
 		// TODO Auto-generated constructor stub

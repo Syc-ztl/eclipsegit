@@ -2,20 +2,18 @@ package com.sun.chenglixin.entity;
 
 import java.util.Date;
 /**
- * 题库题实体类
+ * 题库试题表 实体类
  * @author lenveo
  *
  */
 public class Information extends BaseEntity {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-	private Integer iId;
-	private Integer tId;
-	private Integer aId;
-	private String type;
-	private String body;
+	private Integer iId;//试题id
+	private Integer tId;//题库类型表id
+	private String type;//试题类型，单选single或多选multiple
+	private String body;//题目
+
 	public Information(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
 		super(createdUser, createdTime, modifiedUser, modifiedTime);
 		
@@ -31,12 +29,6 @@ public class Information extends BaseEntity {
 	}
 	public void settId(Integer tId) {
 		this.tId = tId;
-	}
-	public Integer getaId() {
-		return aId;
-	}
-	public void setaId(Integer aId) {
-		this.aId = aId;
 	}
 	public String getType() {
 		return type;
@@ -75,7 +67,7 @@ public class Information extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "Information [iId=" + iId + ", tId=" + tId + ", aId=" + aId + ", type=" + type + ", body=" + body
+		return "Information [iId=" + iId + ", tId=" + tId + ", type=" + type + ", body=" + body
 				+ ", getCreatedUser()=" + getCreatedUser() + ", getCreatedTime()=" + getCreatedTime()
 				+ ", getModifiedUser()=" + getModifiedUser() + ", getModifiedTime()=" + getModifiedTime() + "]";
 	}

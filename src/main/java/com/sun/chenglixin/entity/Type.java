@@ -3,29 +3,25 @@ package com.sun.chenglixin.entity;
 import java.util.Date;
 
 /**
- * 题库类型实体类
+ * 题库类型表 实体类
  * @author lenveo
  *
  */
 public class Type extends BaseEntity{
+
+	private static final long serialVersionUID = 1L;
+	private Integer tId;//题库类型id
+	private String title;//题库类型标题
+
 	public Type(String createdUser, Date createdTime, String modifiedUser, Date modifiedTime) {
 		super(createdUser, createdTime, modifiedUser, modifiedTime);
 		// TODO Auto-generated constructor stub
 	}
-	private Integer tId;
-	private Integer iId;
-	private String title;
 	public Integer gettId() {
 		return tId;
 	}
 	public void settId(Integer tId) {
 		this.tId = tId;
-	}
-	public Integer getiId() {
-		return iId;
-	}
-	public void setiId(Integer iId) {
-		this.iId = iId;
 	}
 	public String getTitle() {
 		return title;
@@ -58,7 +54,7 @@ public class Type extends BaseEntity{
 	}
 	@Override
 	public String toString() {
-		return "Type [tId=" + tId + ", iId=" + iId + ", title=" + title + ", getCreatedUser()=" + getCreatedUser()
+		return "Type [tId=" + tId + ", title=" + title + ", getCreatedUser()=" + getCreatedUser()
 				+ ", getCreatedTime()=" + getCreatedTime() + ", getModifiedUser()=" + getModifiedUser()
 				+ ", getModifiedTime()=" + getModifiedTime() + "]";
 	}
