@@ -21,7 +21,14 @@ public class InformationController extends Exception {
     @Autowired
     IInformationService iInformationService;
 
-
+    /**
+     * 保存试题
+     * @Description
+     * @Date 2019/11/7 9:53
+     * @Author wlb
+     * @Param [information, title, session, answer, rAnswer]
+     * @return com.sun.chenglixin.util.JsonResult<java.lang.Void>
+     */
     @RequestMapping(value = "saveInformation")
     public JsonResult<Void> saveInformation(Information information, String title, HttpSession session, String answer, String rAnswer){
         String username = (String) session.getAttribute("username");
