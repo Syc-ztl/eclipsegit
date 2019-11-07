@@ -122,8 +122,16 @@
 		WHERE
 			tid=#{tId}
 	</select>
-	
-	
+
+	<!--查询title-->
+	<select id="findAllType"  resultType="com.sun.chenglixin.entity.Type">
+		SELECT
+		  	title
+		FROM
+			t_type
+		ORDER BY
+			ASC
+	</select>
 	
 	<!--/**
 	 * 根据iId查询题库答案

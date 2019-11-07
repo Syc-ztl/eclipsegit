@@ -2,7 +2,9 @@ package com.sun.chenglixin.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import com.sun.chenglixin.entity.CompanyDetailsPromise;
 import com.sun.chenglixin.entity.CompanyPromise;
@@ -11,6 +13,7 @@ import com.sun.chenglixin.entity.CompanyPromise;
  * @author lenveo
  *
  */
+
 public interface CompanyPromiseMapper {
 	
 	/**

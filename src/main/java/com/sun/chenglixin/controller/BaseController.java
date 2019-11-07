@@ -22,8 +22,10 @@ import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.PasswordNotMatchException;
 import com.sun.chenglixin.service.ex.exception.PhoneNotFoundException;
 import com.sun.chenglixin.service.ex.exception.ServiceException;
+import com.sun.chenglixin.service.ex.exception.SimulationExamNotFoundException;
 import com.sun.chenglixin.service.ex.exception.UpdateException;
 import com.sun.chenglixin.service.ex.exception.UserNotFoundException;
+import com.sun.chenglixin.service.ex.exception.UserPromiseNotFoundException;
 import com.sun.chenglixin.service.ex.exception.UsernameDuplicateException;
 import com.sun.chenglixin.service.ex.exception.WrongAnswerException;
 import com.sun.chenglixin.util.JsonResult;
@@ -74,6 +76,9 @@ public class BaseController {
 		}else if(e instanceof FileTypeException) {
 			json.setState(84);
 			json.setMessage(e.getMessage());
+		}else if(e instanceof UserPromiseNotFoundException) {
+			json.setState(91);
+			json.setMessage(e.getMessage());
 		}else if(e instanceof CompanyPromiseNotFoundException) {
 			json.setState(90);
 			json.setMessage(e.getMessage());
@@ -91,6 +96,9 @@ public class BaseController {
 			json.setMessage(e.getMessage());
 		}else if(e instanceof HeadLineNotFoundException) {
 			json.setState(130);
+			json.setMessage(e.getMessage());
+		}else if(e instanceof SimulationExamNotFoundException) {
+			json.setState(122);
 			json.setMessage(e.getMessage());
 		}
 		

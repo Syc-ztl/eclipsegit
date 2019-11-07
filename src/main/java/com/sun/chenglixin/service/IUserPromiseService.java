@@ -1,5 +1,7 @@
 package com.sun.chenglixin.service;
 
+import java.util.List;
+
 import com.sun.chenglixin.entity.UserDetailsPromise;
 import com.sun.chenglixin.entity.UserPromise;
 import com.sun.chenglixin.service.ex.exception.InsertException;
@@ -19,7 +21,7 @@ public interface IUserPromiseService {
 	 * @return
 	 * @throws UserPromiseNotFoundException
 	 */
-	UserPromise seekUserPromise(Integer start,Integer end)throws UserPromiseNotFoundException;
+	List<UserPromise> seekUserPromise(Integer start,Integer end)throws UserPromiseNotFoundException;
 	
 	/**
 	 * 根据用户承诺书添加详情表和简版

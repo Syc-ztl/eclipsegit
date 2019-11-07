@@ -103,6 +103,7 @@ public class UserServiceImpl implements IUserService {
 	 * 
 	 * @param phone
 	 */
+	@Override
 	public void sendCode(String phone) {
 		long ran = Math.round(Math.random() * 10000);
 		System.err.println(phone);
@@ -123,6 +124,7 @@ public class UserServiceImpl implements IUserService {
 	 * @param password
 	 * @param code
 	 */
+	@Override
 	public void updatePassword(String phone, String password, String code)
 			throws UserNotFoundException, UpdateException, PhoneNotFoundException {
 		User user = findByPhone(phone);
@@ -146,6 +148,7 @@ public class UserServiceImpl implements IUserService {
 	/**
 	 * 根据电话修改电话
 	 */
+	@Override
 	public void updatePhone(String oldphone, String newphone, String code)
 			throws PhoneNotFoundException, UpdateException, UserNotFoundException {
 		User user = findByPhone(oldphone);

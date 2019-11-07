@@ -2,7 +2,9 @@ package com.sun.chenglixin.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import com.sun.chenglixin.entity.DetailsHeadline;
 import com.sun.chenglixin.entity.HeadLine;
@@ -13,6 +15,7 @@ import com.sun.chenglixin.entity.Photo;
  * @author lenveo
  *
  */
+
 public interface HeadLineMapper {
 	
 	/**

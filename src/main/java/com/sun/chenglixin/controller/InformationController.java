@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 @RestController
 @RequestMapping(value = "Information")
-public class InformationController extends Exception {
+public class InformationController extends BaseController {
 
     @Autowired
     IInformationService iInformationService;

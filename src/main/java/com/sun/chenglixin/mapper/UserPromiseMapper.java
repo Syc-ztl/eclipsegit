@@ -1,6 +1,10 @@
 package com.sun.chenglixin.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import com.sun.chenglixin.entity.UserDetailsPromise;
 import com.sun.chenglixin.entity.UserPromise;
@@ -10,6 +14,7 @@ import com.sun.chenglixin.entity.UserPromise;
  * @author lenveo
  *
  */
+
 public interface UserPromiseMapper {
 	
 	/**
@@ -34,7 +39,7 @@ public interface UserPromiseMapper {
 	 * @param end	
 	 * @return
 	 */
-	UserPromise  findUserPromise(@Param("start")Integer start,@Param("end")Integer end);
+	List<UserPromise>  findUserPromise(@Param("start")Integer start,@Param("end")Integer end);
 	
 	
 }

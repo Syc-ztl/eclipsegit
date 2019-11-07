@@ -22,6 +22,7 @@ import com.sun.chenglixin.controller.Exception.FileStateException;
 import com.sun.chenglixin.controller.Exception.FileTypeException;
 import com.sun.chenglixin.entity.CompanyPromise;
 import com.sun.chenglixin.entity.DetailsHeadline;
+import com.sun.chenglixin.entity.DetalitsHeadLineAndPhotoVO;
 import com.sun.chenglixin.entity.HeadLine;
 import com.sun.chenglixin.service.IHeadLineService;
 import com.sun.chenglixin.service.ex.exception.HeadLineNotFoundException;
@@ -108,5 +109,63 @@ public class HeadLineController extends BaseController {
 	
 	
 	
+	@RequestMapping("save_photo")
+	public JsonResult<Void> savePhotoAvatar(String title,
+			@RequestParam("file") MultipartFile file,
+			HttpServletRequest request,HttpSession session){
+		String modifiedUser = (String) session.getAttribute("username");
+		// 空文件验证
+				if (file.isEmpty()) {
+					throw new FileEmptyException("文件上传异常！文件不能为空"); 
+				}
+				// 文件大小验证
+				long fileSize = file.getSize();
+				if (fileSize > AVATAR_MAX_SIZE) {
+					throw new FileSizeException("文件上传异常！文件大小超过上限:" + (AVATAR_MAX_SIZE / 1024) + "kb");
+				}
+				// 文件类型验证
+				if (!AVATAR_TYPES.contains(file.getContentType())) {
+					throw new FileTypeException("文件上传异常！文件类型不正确，允许的类型有：" + AVATAR_TYPES);
+				}
+				String oldFileName = file.getOriginalFilename();
+				Integer index = oldFileName.lastIndexOf(".");
+				String suffix = "";
+				if (index != -1) {
+					suffix = oldFileName.substring(index);
+				}
+				String fileName = UUID.randomUUID().toString() + suffix;
+				String filePath = request.getServletContext().getRealPath("upload");
+				File parent = new File(filePath);
+				if (!parent.exists()) {
+					parent.mkdirs();
+				}
+				File dest = new File(parent, fileName);
+
+				try {
+					file.transferTo(dest);
+				} catch (IllegalStateException e) {
+					throw new FileStateException("文件上传异常" + e.getMessage());
+				} catch (IOException e) {
+					throw new FileIOException("文件上传异常" + e.getMessage());
+				}
+
+				String avatar = "/upload" + fileName;
+		service.savePhotoAvatar(title, avatar, modifiedUser);
+		JsonResult<Void>  json=new JsonResult<Void>();	
+		json.setState(20);
+		return json;
+	}
+	
+	
+	
+	@RequestMapping("seek_detailsHeadline")
+	public  JsonResult<DetalitsHeadLineAndPhotoVO>  seekDetailsHeadline(Integer dhid){
+		
+		DetalitsHeadLineAndPhotoVO hpVO=service.seekDetailsHeadline(dhid);
+		JsonResult<DetalitsHeadLineAndPhotoVO>  json=new JsonResult<DetalitsHeadLineAndPhotoVO>();	
+		json.setState(20);
+		json.setDate(hpVO);
+		return json;
+	}
 	
 }

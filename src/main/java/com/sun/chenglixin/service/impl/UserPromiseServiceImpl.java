@@ -1,6 +1,7 @@
 package com.sun.chenglixin.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,9 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 	UserPromiseMapper mapper;
 	
 	@Override
-	public UserPromise seekUserPromise(Integer start, Integer end) throws UserPromiseNotFoundException {
-		UserPromise userpromise=findUserPromise(start, end);
-		if(userpromise==null) {
+	public List<UserPromise> seekUserPromise(Integer start, Integer end) throws UserPromiseNotFoundException {
+		List<UserPromise> userpromise=findUserPromise(start, end);
+		if(userpromise.isEmpty()) {
 			throw new UserPromiseNotFoundException("已经到底了！");
 		}
 		return userpromise;
@@ -62,7 +63,7 @@ public class UserPromiseServiceImpl implements IUserPromiseService {
 	 * @param end	
 	 * @return
 	 */
-	private UserPromise  findUserPromise(Integer start,Integer end) {
+	private List<UserPromise>  findUserPromise(Integer start,Integer end) {
 		if(start==null || end==null) {
 			throw new IrregularParameterException("参数不规范");
 		}

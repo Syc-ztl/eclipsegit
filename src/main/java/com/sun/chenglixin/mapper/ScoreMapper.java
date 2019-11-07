@@ -1,5 +1,8 @@
 package com.sun.chenglixin.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
 import com.sun.chenglixin.entity.Score;
 
 public interface ScoreMapper {

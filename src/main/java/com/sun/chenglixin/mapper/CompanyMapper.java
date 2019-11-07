@@ -2,6 +2,9 @@ package com.sun.chenglixin.mapper;
 
 import java.util.Date;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
 import com.sun.chenglixin.entity.Company;
 
 import io.lettuce.core.dynamic.annotation.Param;
@@ -11,6 +14,7 @@ import io.lettuce.core.dynamic.annotation.Param;
  * @author lenveo
  *
  */
+
 public interface CompanyMapper {
 	
 	

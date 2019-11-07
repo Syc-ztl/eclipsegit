@@ -43,6 +43,7 @@ public class CompanyServiceImpl implements ICompanyService {
 	/**
 	 * 添加一个企业
 	 */
+	@Override
 	public void saveCompany(Company company, String code)
 			throws CodeCheckOutException, InsertException, UsernameDuplicateException {
 		String companyName = company.getCompanyName();
@@ -71,7 +72,7 @@ public class CompanyServiceImpl implements ICompanyService {
 			throw new InsertException("数据插入异常，请联系管理员");
 		}
 	}
-
+	@Override
 	public Company login(String phone, String password) throws PhoneNotFoundException, PasswordNotMatchException {
 
 		Company com = findByphone(phone);
@@ -95,6 +96,7 @@ public class CompanyServiceImpl implements ICompanyService {
 	 * 
 	 * @param phone
 	 */
+	@Override
 	public void sendCode(String phone) {
 		long ran = Math.round(Math.random() * 10000);
 		System.err.println(phone);
@@ -111,6 +113,7 @@ public class CompanyServiceImpl implements ICompanyService {
 	/**
 	 * 根据电话修改密码
 	 */
+	@Override
 	public void changePassword(String phone, String password, String code)
 			throws PhoneNotFoundException, CodeCheckOutException, UpdateException {
 		Company company = findByphone(phone);
@@ -134,6 +137,7 @@ public class CompanyServiceImpl implements ICompanyService {
 	/**
 	 * 根据电话修改电话
 	 */
+	@Override
 	public void changePhone(String oldphone, String newPhone, String code)
 			throws PhoneNotFoundException, CodeCheckOutException, UpdateException {
 		Company company = findByphone(oldphone);

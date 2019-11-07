@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sun.chenglixin.entity.DetailsHeadline;
+import com.sun.chenglixin.entity.DetalitsHeadLineAndPhotoVO;
 import com.sun.chenglixin.entity.HeadLine;
 import com.sun.chenglixin.entity.Photo;
 import com.sun.chenglixin.mapper.HeadLineMapper;
@@ -74,10 +75,17 @@ public class HeadLineServiceImpl implements IHeadLineService{
 		if(!row.equals(1)) {
 			throw new InsertException("数据插入异常");
 		}
-		
 	}
 	
-	
+	@Override
+	public DetalitsHeadLineAndPhotoVO seekDetailsHeadline(Integer dhid) {
+		DetailsHeadline headline=findDetailsHeadline(dhid);
+		List<Photo> list=findAvatar(dhid);
+		DetalitsHeadLineAndPhotoVO  hpVO=new DetalitsHeadLineAndPhotoVO();
+		hpVO.setDeta(headline);
+		hpVO.setList(list);
+		return hpVO;
+	}
 
 	/**
 	 * 根据分页查询进行查询信用头条的简版信息

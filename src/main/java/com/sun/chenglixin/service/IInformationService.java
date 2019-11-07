@@ -9,7 +9,6 @@ import com.sun.chenglixin.service.ex.exception.InformationNotFoundException;
 import com.sun.chenglixin.service.ex.exception.InformationSumIsEmptyException;
 import com.sun.chenglixin.service.ex.exception.InsertException;
 import com.sun.chenglixin.service.ex.exception.TitleNotFoundException;
-import com.sun.chenglixin.service.ex.exception.TypeNotFoundException;
 import com.sun.chenglixin.service.ex.exception.WrongAnswerException;
 
 /**

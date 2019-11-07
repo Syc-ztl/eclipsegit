@@ -2,6 +2,9 @@ package com.sun.chenglixin.mapper;
 
 import java.util.Date;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
 import com.sun.chenglixin.entity.User;
 
 import io.lettuce.core.dynamic.annotation.Param;
