@@ -5,6 +5,7 @@ import com.sun.chenglixin.service.IInformationService;
 import com.sun.chenglixin.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,7 @@ public class InformationController extends BaseController {
      * @return com.sun.chenglixin.util.JsonResult<java.lang.Void>
      */
     @RequestMapping(value = "saveInformation")
-    public JsonResult<Void> saveInformation(Information information, String title, HttpSession session, String answer, String[] rAnswer){
+    public JsonResult<Void> saveInformation(Information information, String title, HttpSession session, String answer, @RequestParam("rAnswer[]") String[] rAnswer){
         String username = (String) session.getAttribute("username");
         iInformationService.saveInformation(information, title, username, answer, rAnswer);
         JsonResult<Void> json=new JsonResult<Void>();

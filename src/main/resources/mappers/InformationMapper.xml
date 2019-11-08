@@ -62,8 +62,8 @@
 			created_time ,modified_user,
 			modified_time
 		)VALUES(
-			#{iid},#{answer},#{rAnswer},
-			#{createdUser},#{createdTime },
+			#{iId},#{answer},#{rAnswer},
+			#{createdUser},#{createdTime},
 			#{modifiedUser},#{modifiedTime}
 		)
 	</insert>
@@ -100,7 +100,7 @@
 		JOIN
 			t_information_answer  AS a
 		ON
-			i.iId=a.iId
+			i.iid=a.iId
 		ORDER BY
 			ASC
 	</select>
@@ -147,7 +147,7 @@
 			JOIN
 				t_information_answer  AS a
 			ON
-				i.iId=a.iId
+				i.iid=a.iid
 	  		WHERE
 	  			i.iid=#{iId}
 	  </select>

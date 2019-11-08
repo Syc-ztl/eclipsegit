@@ -17,6 +17,8 @@ import com.sun.chenglixin.service.ex.exception.IrregularParameterException;
 import com.sun.chenglixin.service.ex.exception.TitleNotFoundException;
 import com.sun.chenglixin.service.ex.exception.TypeNotFoundException;
 import com.sun.chenglixin.service.ex.exception.WrongAnswerException;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * 题库业务层实现类
  * @author lenveo
@@ -30,6 +32,7 @@ public class InformationServiceImpl implements IInformationService{
 	
 	
 	@Override
+	@Transactional
 	public void saveInformation(Information information,String title,String username,String answer,String[] rAnswer) {
 
 		//根据title去库里查tid
@@ -50,11 +53,11 @@ public class InformationServiceImpl implements IInformationService{
 		information.settId(findTid);
 		//判断是单选还是多选
 		if(rAnswer.length == 1){
-			information.setType("single");
+			information.setType("单选题");
 		}else if(rAnswer.length > 1){
-			information.setType("multiple");
+			information.setType("多选题");
 		}else{
-			throw new InsertException("请勾选正确答案为空，请勾选");
+			throw new InsertException("正确答案为空，请勾选！");
 		}
 		information.setCreatedTime(new Date());
 		information.setCreatedUser(username);
